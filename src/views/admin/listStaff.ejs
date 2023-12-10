@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <title>List Staff</title>
+</head>
+
+<body>
+    <%- include('componentAdmin/notification') %>
+    
+    <div class="container">
+        <%- include('componentAdmin/sideBar') %>
+
+            <!-- Main Content -->
+            <main>
+                <!-- Recent Orders Table -->
+                <div class="recent-orders">
+                    <h1>List Staff</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Avatar Staff</th>
+                                <th>Full Name Staff</th>
+                                <th>Email Staff</th>
+                                <th>Name Staff</th>
+                                <th>Date Staff</th>
+                                <th>Status Staff</th>
+                                <th>Check Click Email Staff</th>
+                                <th>Check Change Password First Time Staff</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% list_staff.forEach(staff=> { %>
+                                <tr>
+                                    <td>
+                                        <img src="<%= staff.avatar_staff %>" alt="Avatar" width="100" height="100">
+                                    </td>
+                                    <td>
+                                        <%= staff.full_name_staff %>
+                                    </td>
+                                    <td>
+                                        <%= staff.email_staff %>
+                                    </td>
+                                    <td>
+                                        <%= staff.name_staff %>
+                                    </td>
+                                    <td>
+                                        <%= staff.date_staff %>
+                                    </td>
+                                    <td>
+                                        <% if (staff.status_staff) { %>
+                                            Unlock
+                                        <% } else { %>
+                                            Lock
+                                        <% } %>
+                                    </td>
+                                    <td>
+                                        <%= staff.check_click_email_staff %>
+                                    </td>
+                                    <td>
+                                        <%= staff.check_change_new_password_first_time_staff %>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/list-detail-staff/<%= staff._id %>">Xem chi tiết</a>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End of Recent Orders -->
+
+            </main>
+            <!-- End of Main Content -->
+
+        <%- include('componentAdmin/rightSection') %>
+    </div>
+
+    <script src="js/admin/admin.js"></script>
+</body>
+
+</html>

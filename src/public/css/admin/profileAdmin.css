@@ -1,0 +1,203 @@
+.user-list {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+}
+
+.user-list .menu {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-list .menu .btn-general {
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: left;
+}
+
+.user-list .menu .btn-changePassword {
+    padding: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-top: 5px;
+    font-size: 20px;
+    text-align: left;
+
+}
+
+.user-list .profile-card {
+    flex: 7;
+    height: 100%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-card .img {
+    height: 200px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: rgb(99, 204, 245);
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-card .img img {
+    position: absolute;
+    border-radius: 50%;
+    width: 200px;
+    height: 100%;
+    top: 40px;
+}
+
+.profile-card .profile-info {
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.profile-card .btn-save {
+    align-self: center;
+    width: fit-content;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    right: 0;
+    margin-top: 50px;
+}
+
+
+.user-list .profile-card h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 25px;
+}
+
+.change-password {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.btn-change-Password {
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 20px;
+}
+
+.btn-change-Password:hover {
+    background-color: #3893f5;
+    transition: ease 0.5s;
+}
+
+.profile-card .upload-img {
+    align-self: center;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    margin: 20px
+}
+
+.upload-img .input-img {
+    width: 100%;
+}
+
+.upload-img .btn-uploadImg {
+    width: fit-content;
+    align-self: center;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 18px 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    right: 5px;
+}
+
+.btn-general.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-changePassword.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.error {
+    margin: 8px;
+    width: fit-content;
+    position: fixed;
+    bottom: 5px;
+    right: 0;
+    padding: 15px;
+    background-color: rgb(245, 63, 93);
+    border-radius: 5px;
+    /* Điều này sẽ làm cho góc phải trên trở nên tròn */
+    animation: hide 3s linear 2s 1 forwards;
+}
+
+.error h2 {
+    padding: 0px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+    /* Loại bỏ khoảng cách xung quanh nội dung */
+}
+
+@keyframes hide {
+    to {
+        opacity: 0;
+    }
+}

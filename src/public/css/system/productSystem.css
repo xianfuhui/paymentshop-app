@@ -1,0 +1,114 @@
+main .btn-continue {
+    background-color: rgb(5, 102, 248);
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 25px;
+}
+
+main .btn-continue:hover {
+    background-color: rgb(27, 83, 189);
+    transition: ease 0.5s;
+}
+
+main .btn-clear {
+    background-color: rgb(235, 36, 36);
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 25px;
+    margin-right: 12px;
+}
+
+main .btn-clear:hover {
+    background-color: rgb(165, 13, 13);
+    transition: ease 0.5s;
+}
+
+
+.content .insights form {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.content .insights form input {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    min-width: 50vh;
+    font-size: 18px;
+    height: 100%;
+    margin-right: 15px;
+}
+
+.content .insights button {
+    background-color: rgb(5, 102, 248);
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.content .insights button:hover {
+    background-color: rgb(27, 83, 189);
+    transition: ease 0.5s;
+}
+
+@keyframes hide {
+    to {
+        opacity: 0;
+    }
+}
+
+.content #productSearchInput {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    min-width: 50vh;
+    font-size: 18px;
+    height: 100%;
+    margin-right: 15px;
+}
+
+#searchSuggestions {
+    border: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    top: 54px;
+    width: 80%;
+    /* Make sure it spans the entire width of the parent */
+}
+
+/* Add this style to make the parent container relative */
+form {
+    position: relative;
+    display: inline-block;
+    /* Ensure the form only takes the necessary width */
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+    /* Set the background color on hover as needed */
+}

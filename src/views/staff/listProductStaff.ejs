@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/staff/staff.css">
+    <title>List Customer</title>
+</head>
+
+<body>
+    <%- include('componentStaff/notification') %>
+
+    <%- include('componentStaff/sideBar') %>
+
+    <!-- Main Content -->
+    <div class="content">
+        <%- include('componentStaff/navBar') %>
+
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Manager Product</h1>
+                </div>
+                <a href="#" class="report">
+                    <i class='bx bx-cloud-download'></i>
+                    <span>Download CSV</span>
+                </a>
+            </div>
+
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-receipt'></i>
+                        <h3>List Product Staff</h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Code Product</th>
+                                <th>Name Product</th>
+                                <th>Price Product</th>
+                                <th>Day Add Product</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% list_product.forEach(product=> { %>
+                                <tr>
+                                    <td>
+                                        <%= product.code_product %>
+                                    </td>
+                                    <td>
+                                        <%= product.name_product %>
+                                    </td>
+                                    <td>
+                                        <%= product.price_sell_product %>
+                                    </td>
+                                    <td>
+                                        <%= product.day_add_product %>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+</body>
+
+</html>

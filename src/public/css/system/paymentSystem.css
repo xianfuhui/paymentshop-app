@@ -1,0 +1,117 @@
+.content .insights li {
+    display: flex;
+    flex-direction: column;
+}
+
+.content .insights .bill-info .info h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.content .insights .bill-info {
+    background-color: rgb(212, 212, 212);
+    width: 45%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+    margin-top: 30px;
+}
+
+
+.content .insights .bill-info p {
+    font-size: large;
+    padding: 12px;
+}
+
+.content .insights .bill-info span {
+    float: right;
+    margin-right: 10px;
+    font-weight: 700;
+    font-size: 23px;
+}
+
+.content .insights .bill-info .money-give {
+    padding: 12px;
+}
+
+.content .insights .bill-info .money-give input {
+    font-size: 18px;
+}
+
+.content .insights .bill-info .customer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.content .insights .bill-info .customer-info>div {
+    padding: 15px 12px;
+}
+
+.content .insights .bill-info .customer-info input {
+    float: inline-end;
+    width: 80%;
+    font-size: 18px;
+    border: none;
+    padding: 8px;
+}
+
+.content .insights .bill-info .customer-info label {
+    font-size: large;
+}
+
+.content .insights .bill-info .money-give label {
+    font-size: large;
+}
+
+.content .insights .bill-info .money-give input {
+    float: right;
+}
+
+main .btn-continue {
+    background-color: rgb(5, 102, 248);
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 25px;
+
+}
+
+
+main .btn-continue:hover {
+    background-color: rgb(27, 83, 189);
+    transition: ease 0.5s;
+}
+
+main .btn-clear {
+    background-color: rgb(235, 36, 36);
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 25px;
+    margin-right: 12px;
+}
+
+main .btn-clear:hover {
+    background-color: rgb(165, 13, 13);
+    transition: ease 0.5s;
+}
+
+@keyframes hide {
+    to {
+        opacity: 0;
+    }
+}

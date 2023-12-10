@@ -1,0 +1,29 @@
+/* 404.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .error-container {
+    text-align: center;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 60%;
+  }
+  
+  h1 {
+    color: #ff0000;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #0000ff;
+    margin-top: 10px;
+    display: block;
+  }
+  

@@ -1,0 +1,27 @@
+.error {
+    margin: 8px;
+    width: fit-content;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    background-color: pink;
+    border-radius: 5px;
+    /* Điều này sẽ làm cho góc phải trên trở nên tròn */
+    animation: hide 3s linear 2s 1 forwards;
+}
+
+.error h2 {
+    padding: 0px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+    /* Loại bỏ khoảng cách xung quanh nội dung */
+}
+
+@keyframes hide {
+    to {
+        opacity: 0;
+    }
+}

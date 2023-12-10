@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/report/analysisReport.css">
+    <title>Analysis Report</title>
+</head>
+
+<body>
+    <%- include('../admin/componentAdmin/notification') %>
+
+        <div class="container">
+            <%- include('../admin/componentAdmin/sideBar') %>
+
+                <!-- Main Content -->
+                <main>
+                    <h1>Analytics</h1>
+                    <!-- Analyses -->
+                    <div class="analyse">
+                        <div class="sales">
+                            <div class="status">
+                                <div class="info">
+                                    <h3>Total Money</h3>
+                                    <h1>
+                                        <%= totalReceivedMoney %>
+                                    </h1>
+                                </div>
+                                <div class="progresss">
+                                    <svg>
+                                        <circle cx="38" cy="38" r="36"></circle>
+                                    </svg>
+                                    <div class="percentage">
+                                        <p>+100%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="visits">
+                            <div class="status">
+                                <div class="info">
+                                    <h3>Total Bills</h3>
+                                    <h1>
+                                        <%= totalOrders %>
+                                    </h1>
+                                </div>
+                                <div class="progresss">
+                                    <svg>
+                                        <circle cx="38" cy="38" r="36"></circle>
+                                    </svg>
+                                    <div class="percentage">
+                                        <p>+100%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="searches">
+                            <div class="status">
+                                <div class="info">
+                                    <h3>Total Products</h3>
+                                    <h1>
+                                        <%= totalProducts %>
+                                    </h1>
+                                </div>
+                                <div class="progresss">
+                                    <svg>
+                                        <circle cx="38" cy="38" r="36"></circle>
+                                    </svg>
+                                    <div class="percentage">
+                                        <p>+100%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Analyses -->
+
+                    <div>
+                        <h2>Filter Date</h2>
+                        <form action="/report/analysis-report" method="POST">
+                            <label for="filter">Lọc theo:</label>
+                            <select name="filter" id="filter">
+                                <option value="today">Hôm nay</option>
+                                <option value="yesterday">Hôm qua</option>
+                                <option value="last7days">7 ngày trước</option>
+                                <option value="thisMonth">Tháng này</option>
+                                <option value="custom">Thời gian cụ thể</option>
+                            </select>
+                            <br>
+
+                            <label for="startDate" style="display: none;">Từ ngày:</label>
+                            <input type="date" id="startDate" name="startDate" style="display: none;">
+
+                            <label for="endDate" style="display: none;">Đến ngày:</label>
+                            <input type="date" id="endDate" name="endDate" style="display: none;">
+
+                            <br>
+                            <input type="submit" value="Lọc">
+                        </form>
+                    </div>
+
+                    <!-- Recent Orders Table -->
+                    <div class="recent-orders">
+                        <h2>Recent Orders</h2>
+                        <% if (listBill.length> 0) { %>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Total Money</th>
+                                        <th>Total Products</th>
+                                        <th>Money Give</th>
+                                        <th>Money Back</th>
+                                        <th>Customer</th>
+                                        <th>Staff</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% listBill.forEach(function(bill) { %>
+                                        <tr>
+                                            <td>
+                                                <%= bill.date_bill.toDateString() %>
+                                            </td>
+                                            <td>
+                                                <%= bill.total_money_bill %>
+                                            </td>
+                                            <td>
+                                                <%= bill.total_product_bill %>
+                                            </td>
+                                            <td>
+                                                <%= bill.money_give_bill %>
+                                            </td>
+                                            <td>
+                                                <%= bill.money_back_bill %>
+                                            </td>
+                                            <td>
+                                                <%= bill.customer %>
+                                            </td>
+                                            <td>
+                                                <%= bill.staff %>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
+                        <% } else { %>
+                            <p>No bills found.</p>
+                        <% } %>
+                    </div>
+                    <!-- End of Recent Orders -->
+
+                </main>
+                <!-- End of Main Content -->
+
+                <%- include('../admin/componentAdmin/rightSection') %>
+        </div>
+
+        <script src="js/admin/admin.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var filterSelect = document.getElementById('filter');
+                var startDateLabel = document.querySelector('label[for="startDate"]');
+                var startDateInput = document.getElementById('startDate');
+                var endDateLabel = document.querySelector('label[for="endDate"]');
+                var endDateInput = document.getElementById('endDate');
+
+                filterSelect.addEventListener('change', function () {
+                    if (filterSelect.value === 'custom') {
+                        startDateLabel.style.display = 'inline-block';
+                        startDateInput.style.display = 'inline-block';
+                        endDateLabel.style.display = 'inline-block';
+                        endDateInput.style.display = 'inline-block';
+                    } else {
+                        startDateLabel.style.display = 'none';
+                        startDateInput.style.display = 'none';
+                        endDateLabel.style.display = 'none';
+                        endDateInput.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+</body>
+
+</html>

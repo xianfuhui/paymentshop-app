@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/staff/staff.css">
+    <link rel="stylesheet" href="/css/system/productSystem.css">
+    <title>Check Out</title>
+</head>
+
+<body>
+    <%- include('../staff/componentStaff/notification') %>
+
+        <%- include('../staff/componentStaff/sideBar') %>
+
+            <!-- Main Content -->
+            <div class="content">
+                <%- include('../staff/componentStaff/navBar') %>
+
+                    <main>
+                        <div class="header">
+                            <div class="left">
+                                <h1>Payment System</h1>
+                                <ul class="breadcrumb ">
+                                    <a href="/system/" class="active">Check Out</a>
+                                    /
+                                    <a href="/system/payment">Payment</a>
+                                </ul>
+                            </div>
+                            <a href="#" class="report">
+                                <i class='bx bx-cloud-download'></i>
+                                <span>Download CSV</span>
+                            </a>
+                        </div>
+
+                        <!-- Insights -->
+                        <ul class="insights">
+                            <li>
+                                <i class='bx bx-qr'></i>
+                                <span class="info">
+                                    <h3>
+                                        Barcode
+                                    </h3>
+                                    <p>Product</p>
+                                </span>
+                                <form action="/system/" method="POST">
+                                    <input type="text" name="productCode" placeholder="Enter barcode">
+                                    <button type="submit">Add</button>
+                                </form>
+
+                                <form action="/system/search" method="POST">
+                                    <input type="text" name="searchTerm" id="productSearchInput"
+                                        placeholder="Search products">
+                                    <!-- Khu vực hiển thị gợi ý -->
+                                    <p id="searchSuggestions" class="search-suggestions"></p>
+                                    <button>Add</button>
+                                </form>
+                            </li>
+                        </ul>
+                        <!-- End of Insights -->
+
+                        <div class="bottom-data">
+                            <div class="orders">
+                                <div class="header">
+                                    <i class='bx bx-receipt'></i>
+                                    <h3>List Product</h3>
+                                    <i class='bx bx-filter'></i>
+                                    <i class='bx bx-search'></i>
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Code Product</th>
+                                            <th>Name Product</th>
+                                            <th>Status</th>
+                                            <th>Price</th>
+                                            <th>Total Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% products.forEach(product=> { %>
+                                            <tr>
+                                                <td>
+                                                    <%= product.code_product %>
+                                                </td>
+                                                <td>
+                                                    <%= product.name_product %>
+                                                </td>
+                                                <td><span class="status process">Processing</span></td>
+                                                <td>
+                                                    <%= product.price_sell_product %>
+                                                </td>
+                                                <td>
+                                                    <input type="number" value="<%= product.quantity %>" data-product-code="<%= product.code_product %>">
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <table id="list-product" style="display: none;">
+                            <thead>
+                                <tr>
+                                    <th>Code Product</th>
+                                    <th>Name Product</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% listProduct.forEach(product=> { %>
+                                    <tr>
+                                        <td>
+                                            <%= product.code_product %>
+                                        </td>
+                                        <td>
+                                            <%= product.name_product %>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                            </tbody>
+                        </table>
+
+                        <button onclick="redirectToPayment()" class=" btn-continue">Continue</button>
+                        <button onclick="clearProductTable()" class=" btn-clear">Clear</button>
+                    </main>
+            </div>
+
+            <script>
+                function redirectToPayment() {
+                    window.location.href = '/system/payment';
+                }
+
+                function clearProductTable() {
+                    window.location.href = '/system/clear';
+                }
+            </script>
+
+            <!-- ... (your HTML code) ... -->
+
+            <!-- ... (your HTML code) ... -->
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Lấy danh sách sản phẩm từ bảng có id là "list-product"
+                    const table = document.getElementById("list-product");
+                    const tbody = table.querySelector("tbody");
+                    const rows = tbody.querySelectorAll("tr");
+
+                    // Khai báo một mảng để chứa danh sách sản phẩm
+                    const products = [];
+
+                    // Lặp qua từng dòng của bảng để lấy thông tin sản phẩm
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll("td");
+                        const product = {
+                            code_product: cells[0].textContent,
+                            name_product: cells[1].textContent
+                            // Thêm các thuộc tính khác nếu cần
+                        };
+
+                        // Thêm sản phẩm vào mảng
+                        products.push(product);
+                    });
+
+                    // Bây giờ biến products chứa danh sách sản phẩm từ bảng
+                    console.log(products);
+
+                    // Gọi hàm để thực hiện tìm kiếm
+                    initializeSearch(products);
+                });
+
+                function initializeSearch(products) {
+                    const productSearchInput = document.getElementById("productSearchInput");
+                    const searchSuggestions = document.getElementById("searchSuggestions");
+
+                    // Sự kiện khi người dùng nhập vào ô tìm kiếm
+                    productSearchInput.addEventListener("input", function () {
+                        const searchTerm = productSearchInput.value.trim().toLowerCase();
+
+                        // Hiển thị gợi ý nếu từ khóa hợp lệ, ngược lại ẩn gợi ý
+                        if (searchTerm === "") {
+                            hideSuggestions();
+                        } else {
+                            const matchingProducts = products.filter(product =>
+                                product.code_product.toLowerCase().includes(searchTerm) ||
+                                product.name_product.toLowerCase().includes(searchTerm)
+                            );
+
+                            displaySuggestions(matchingProducts);
+                        }
+                    });
+
+                    // Hàm hiển thị gợi ý
+                    function displaySuggestions(suggestions) {
+                        searchSuggestions.innerHTML = "";
+                        suggestions.forEach(suggestion => {
+                            const suggestionItem = document.createElement("div");
+                            suggestionItem.textContent = suggestion.name_product;
+                            suggestionItem.classList.add("suggestion-item");
+
+                            // Sự kiện khi click vào một item trong danh sách gợi ý
+                            suggestionItem.addEventListener("click", function () {
+                                // Gán giá trị của suggestion vào ô input
+                                productSearchInput.value = suggestion.name_product.trim();
+                                // Ẩn danh sách gợi ý sau khi chọn
+                                hideSuggestions();
+                            });
+
+                            searchSuggestions.appendChild(suggestionItem);
+                        });
+                    }
+
+                    // Hàm ẩn gợi ý
+                    function hideSuggestions() {
+                        searchSuggestions.innerHTML = "";
+                    }
+                }
+
+                document.querySelectorAll('input[type="number"]').forEach(input => {
+                    input.addEventListener('input', async (event) => {
+                        const productCode = event.target.dataset.productCode;
+                        const newQuantity = event.target.value;
+                        
+                        try {
+                            const response = await fetch('/system/set-quantity-product', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    productCode: productCode,
+                                    quantity: newQuantity
+                                })
+                            });
+
+                            if (!response.ok) {
+                                throw new Error('Failed to update quantity');
+                            }
+                        } catch (err) {
+                            console.error('Error:', err);
+                        }
+                    });
+                });
+
+            </script>
+
+            <!-- ... (your HTML code) ... -->
+</body>
+
+</html>

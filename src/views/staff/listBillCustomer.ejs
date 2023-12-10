@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/staff/staff.css">
+    <title>List Bill Customer</title>
+</head>
+
+<body>
+    <%- include('componentStaff/notification') %>
+
+    <%- include('componentStaff/sideBar') %>
+
+    <!-- Main Content -->
+    <div class="content">
+        <%- include('componentStaff/navBar') %>
+
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Manager Customer</h1>
+                </div>
+                <a href="#" class="report">
+                    <i class='bx bx-cloud-download'></i>
+                    <span>Download CSV</span>
+                </a>
+            </div>
+
+            <div>
+                <h1>Customer Detail</h1>
+                <ul>
+                    <li>Phone Customer: <%= customer.phone_customer %>
+                    </li>
+                    <li>Name Customer: <%= customer.name_customer %>
+                    </li>
+                    <li>Address Customer: <%= customer.address_customer %>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-receipt'></i>
+                        <h3>List Bill of Customer: <%= customer.name_customer %></h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Bill ID</th>
+                                <th>Total Money</th>
+                                <th>Total Products</th>
+                                <th>Money Given</th>
+                                <th>Money Back</th>
+                                <th>Date</th>
+                                <th>Customer ID</th>
+                                <th>Staff ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% list_bill_customer.forEach(bill_customer=> { %>
+                                <tr>
+                                    <td>
+                                        <%= bill_customer._id %>
+                                    </td>
+                                    <td>
+                                        <%= bill_customer.total_money_bill %>
+                                    </td>
+                                    <td>
+                                        <%= bill_customer.total_product_bill %>
+                                    </td>
+                                    <td>
+                                        <%= bill_customer.money_give_bill %>
+                                    </td>
+                                    <td>
+                                        <%= bill_customer.money_back_bill %>
+                                    </td>
+                                    <td>
+                                        <%= bill_customer.date_bill %>
+                                    </td>
+                                    <td>
+                                        <%= bill_customer.customer %>
+                                    </td>
+                                    <td>
+                                        <%= bill_customer.staff %>
+                                    </td>
+                                    <td>
+                                        <a href="/staff/list-detail-bill-customer/<%= bill_customer._id %>">Xem chi tiết đơn hàng</a>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/staff/staff.css">
+    <title>Locked Status Staff</title>
+</head>
+
+<body>
+    <%- include('componentStaff/notification') %>
+
+    <%- include('componentStaff/sideBar') %>
+
+    <!-- Main Content -->
+    <div class="content">
+        <%- include('componentStaff/navBar') %>
+
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Locked Status Staff</h1>
+                </div>
+                <a href="#" class="report">
+                    <i class='bx bx-cloud-download'></i>
+                    <span>Download CSV</span>
+                </a>
+            </div>
+
+            <div>
+                <p>Your account has been locked so you cannot access features.</p>
+            </div>
+        </main>
+    </div>
+    
+</body>
+
+</html>

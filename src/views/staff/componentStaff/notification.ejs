@@ -1,0 +1,14 @@
+<% if (typeof messages !=='undefined' && messages.success) { %>
+    <div class="success">
+        <h2>
+            <%= messages.success %>
+        </h2>
+    </div>
+<% } %>
+<% if (typeof messages !== 'undefined' && messages.error) { %>
+    <div class="error">
+        <h2>
+            <%= messages.error %>
+        </h2>
+    </div>
+<% } %>

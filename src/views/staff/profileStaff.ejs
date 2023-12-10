@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/staff/staff.css">
+    <link rel="stylesheet" href="/css/staff/profileStaff.css">
+    <title>Profile Staff</title>
+</head>
+
+<body>
+    <%- include('../staff/componentStaff/notification') %>
+
+    <%- include('../staff/componentStaff/sideBar') %>
+
+    <!-- Main Content -->
+    <div class="content">
+        <%- include('../staff/componentStaff/navBar') %>
+
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Profile</h1>
+                </div>
+                <div class="report">
+                    <i class='bx bx-cloud-download'></i>
+                    <button class="btn-changePassword" onclick="openAddModal()">Change Password</button>
+                </div>
+            </div>
+
+            <!-- Insights -->
+            <ul class="insights">
+                <li>
+                    <img src="<%= staff.avatar_staff %>" alt="">
+                    <span class="info">
+                        <h3 style="padding: 15px 0;">
+                            <span>Name: </span>
+                            <%= staff.full_name_staff %>
+                        </h3>
+                        <h3 style="padding: 15px 0;">
+                            <span>Email: </span>
+                            <%= staff.email_staff %>
+                        </h3>
+                        <h3 style="padding: 15px 0;">
+                            <span>Status: </span>
+                            <% if (staff.status_staff) { %>
+                                <span style="color: rgb(60, 60, 255);" class="unlock">Unlock</span>
+                            <% } else { %>
+                                <span class="lock">Lock</span>
+                            <% } %>
+                        </h3>
+
+                        <div class="upload">
+                            <form action="/staff/upload-avatar-staff" method="POST"
+                                enctype="multipart/form-data">
+                                <input type="file" id="avatar_staff" name="avatar_staff"
+                                    accept="image/*" required><br><br>
+                                <button type="submit">Upload Avatar</button>
+                            </form>
+                        </div>
+                    </span>
+
+                </li>
+            </ul>
+            <!-- End of Insights -->
+        </main>
+
+        <!-- Modal change password -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>New Password</h2>
+            <form id="passwordForm" action="/staff/change-password-staff" method="POST">
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" name="currentPassword" required><br><br>
+
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required><br><br>
+        
+                <label for="confirmPassword">Confirm New Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+        
+                <input type="submit" value="Change Password">
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openAddModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        var changePasswordButton = document.getElementById("changePasswordBtn");
+
+        changePasswordButton.addEventListener("click", function() {
+            openAddModal();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/admin/profileAdmin.css">
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <%- include('componentAdmin/notification') %>
+
+    <div class="container">
+        <%- include('componentAdmin/sideBar') %>
+
+        <!-- Main Content -->
+        <main>
+            <!-- New Users Section -->
+            <div class="new-users">
+                <h1>Profile</h1>
+                <div class="user-list">
+                    <div class="menu">
+                        <button class="btn-general" onclick="showGeneralContent()">General</button>
+                        <button class="btn-changePassword" onclick="changeContent()">Change password</button>
+                    </div>
+                    <div class="profile-card">
+                        <div class="img">
+                            <!-- Replace 'your-image-url.jpg' with the actual URL of the profile picture -->
+                            <img src="<%= admin.avatar_admin %>" alt="Profile Picture">
+                        </div>
+                        <div class="profile-info">
+                            <h1>Admin</h1>
+                            <p>
+                                <%= admin.name_admin %>@gmail.com
+                            </p>
+                        </div>
+                        <form action="/admin/upload-avatar-admin" method="POST" enctype="multipart/form-data"
+                            class="upload-img">
+                            <input type="file" class="input-img" id="avatar_admin" name="avatar_admin"
+                                accept="image/*" required>
+                            <input type="submit" class="btn-uploadImg" value="Upload Avatar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End of New Users Section -->
+        </main>
+        <!-- End of Main Content -->
+
+        <%- include('componentAdmin/rightSection') %>
+    </div>
+</body>
+
+<script src="/js/admin/admin.js"></script>
+<script>
+    // Lưu nội dung ban đầu của user-list khi trang được tải
+    var originalContent = document.querySelector('.user-list').innerHTML;
+
+    function showGeneralContent() {
+        // Khôi phục nội dung ban đầu khi nhấn nút "General"
+        document.querySelector('.user-list').innerHTML = originalContent;
+        document.querySelector('.btn-general').classList.add('active');
+        document.querySelector('.btn-changePassword').classList.remove('active');
+    }
+
+    // Kích hoạt nút "General" khi trang vừa được tải
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.btn-general').classList.add('active');
+        document.querySelector('.btn-changePassword').classList.remove('active');
+    });
+
+
+    function changeContent() {
+        // Lấy phần tử user-list
+        var userContainer = document.querySelector('.profile-card');
+
+        // Thay đổi nội dung của user-list
+        userContainer.innerHTML = `
+          <!-- New content for user-list -->
+          <h2>Change Password</h2>
+          <form action="/admin/change-password-admin" method="POST" class="change-password">
+              <label for="currentPassword">Current Password:</label>
+              <input type="password" id="currentPassword" name="currentPassword" required>
+          
+              <label for="newPassword">New Password:</label>
+              <input type="password" id="newPassword" name="newPassword" required>
+          
+              <label for="confirmPassword">Confirm New Password:</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+          
+              <button type="submit" class="btn-change-Password">Save changes</button>;
+          </form>
+        `;
+
+        document.querySelector('.btn-general').classList.remove('active');
+        document.querySelector('.btn-changePassword').classList.add('active');
+    }
+</script>
+
+</html>

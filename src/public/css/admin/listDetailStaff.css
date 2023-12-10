@@ -1,0 +1,39 @@
+/* CSS cho nút "Status" */
+button.status-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button.status-button:hover {
+    background-color: #2980b9;
+}
+
+/* CSS cho nút "Send Token To Email Staff" */
+button.token-button {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button.token-button:hover {
+    background-color: #27ae60;
+}
