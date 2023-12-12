@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'src', 'public')));
 app.use(session({
-  secret: 'secret_key', 
+  secret: process.env.KEY, 
   resave: false,
   saveUninitialized: false
 }));
@@ -45,6 +45,10 @@ app.get('/', (req, res) => {
 
 app.get('/404', (req, res) => {
   res.redirect('other/404');
+});
+
+app.get('/405', (req, res) => {
+  res.redirect('other/405');
 });
 
 app.get('*', (req, res) => {

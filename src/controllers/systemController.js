@@ -27,7 +27,7 @@ const postAddProduct = async (req, res) => {
         const product = await Product.findOne({ code_product: productCode });
 
         if (!product) {
-            req.flash('error', 'Sản phẩm không tồn tại');
+            req.flash('error', 'Product does not exist');
             return res.redirect('/system/'); 
         }
 
@@ -46,7 +46,7 @@ const postAddProduct = async (req, res) => {
             req.session.products.push(productWithQuantity);
         }
 
-        req.flash('success', 'Đã thêm vào giỏ');
+        req.flash('success', 'Added to cart');
         return res.redirect('/system/'); 
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -60,7 +60,7 @@ const postAddProduct1 = async (req, res) => {
         const product = await Product.findOne({ name_product: searchTerm });
 
         if (!product) {
-            req.flash('error', 'Sản phẩm không tồn tại');
+            req.flash('error', 'Product does not exist');
             return res.redirect('/system/'); 
         }
 
@@ -79,7 +79,7 @@ const postAddProduct1 = async (req, res) => {
             req.session.products.push(productWithQuantity);
         }
 
-        req.flash('success', 'Đã thêm vào giỏ');
+        req.flash('success', 'Added to cart');
         return res.redirect('/system/'); 
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -94,7 +94,7 @@ const postSetQuantityProduct = async (req, res) => {
         const productIndex = req.session.products.findIndex(prod => prod.code_product === productCode);
 
         if (productIndex === -1) {
-            return res.status(404).json({ message: 'Sản phẩm không tồn tại trong danh sách' });
+            return res.status(404).json({ message: 'Please try again' });
         }
 
         req.session.products[productIndex].quantity = quantity;
@@ -206,9 +206,9 @@ const postPaymentSystem = async (req, res) => {
         const pdfBuffer = await generatePDF(productsInSession, newBill, customer);
         const base64PDF = pdfBuffer.toString('base64');
 
-        res.status(201).json({ message: 'Bill added successfully', bill: newBill, pdfBase64: base64PDF });
+        res.status(201).json({ message: 'Done', bill: newBill, pdfBase64: base64PDF });
     } catch (err) {
-        res.status(500).json({ message: 'Failed to add bill', error: err.message });
+        res.status(500).json({ message: err.message });
     }
 };
 
@@ -216,6 +216,7 @@ const postClearProduct = async (req, res) => {
     try {
         req.session.products = null;
 
+        req.flash('success', 'Cart cleared successfully');
         res.redirect('/system/');
     } catch (err) {
         res.status(500).json({ message: err.message });

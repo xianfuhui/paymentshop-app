@@ -1,5 +1,7 @@
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
 
 const Admin = require('../models/adminModel');
 const Bill = require('../models/billModel');
@@ -44,7 +46,6 @@ const getListDetailBillCustomer = async (req, res) => {
     try {
         const bill = await Bill.findById(id_bill); 
         if (!bill) {
-            //Không tìm thấy hóa đơn
             return res.redirect('/404');
         }
 
@@ -95,11 +96,11 @@ const postLoginStaff = async (req, res) => {
         const staff = await Staff.findOne({ name_staff, password_staff });
         
         if (!staff) {
-            req.flash('error', 'Nhập sai tên người dùng hoặc mật khẩu');
+            req.flash('error', 'Incorrect username or password entered');
             res.redirect('/staff/login-staff'); 
         } else {
             if (!staff.check_click_email_staff) {
-                req.flash('error', 'Bạn là nhân viên mới nên phải xác thực qua email');
+                req.flash('error', 'You are a new employee so you must authenticate via email');
                 res.redirect('/staff/login-staff'); 
             } else if (!staff.status_staff) {
                 req.session.staff = staff;
@@ -133,7 +134,7 @@ const postNewPasswordStaff = async (req, res) => {
         const staff = await Staff.findById(req.session.staff._id);
        
         if (!staff) {
-            req.flash('error', 'Không tìm thấy nhân viên đang đăng nhập. Vui lòng thử lại');
+            req.flash('error', 'Please try again');
             return res.redirect('/staff/new-password-staff'); 
         }
 
@@ -149,7 +150,7 @@ const postNewPasswordStaff = async (req, res) => {
 
         req.session.staff = staff
 
-        req.flash('success', 'Đã thêm mật khẩu mới thành công');
+        req.flash('success', 'New password added successfully');
         res.redirect('/staff/profile-staff'); 
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -180,7 +181,7 @@ const postChangePasswordStaff = async (req, res) => {
         const staff = await Staff.findOne({ name_staff: name_staff, password_staff: currentPassword });
        
         if (!staff) {
-            req.flash('error', "Nhập sai mật khẩu cũ");
+            req.flash('error', "Enter the wrong old password");
             return res.redirect('/staff/profile-staff'); 
         }
 
@@ -193,7 +194,7 @@ const postChangePasswordStaff = async (req, res) => {
 
         await staff.save();
 
-        req.flash('success', 'Đã đổi mật khẩu thành công');
+        req.flash('success', 'Password changed successfully');
         res.redirect('/staff/profile-staff'); 
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -212,14 +213,14 @@ const postUploadAvatarStaff = async (req, res) => {
         const staff = await Staff.findById(req.session.staff._id);;
     
         if (!staff) {
-            req.flash('error', 'Không tìm thấy nhân viên đang đăng nhập. Vui lòng thử lại');
+            req.flash('error', 'Please try again');
             return res.redirect('/staff/profile-staff'); 
         }
 
         staff.avatar_staff = avatarPath;
         await staff.save();
 
-        req.flash('success', 'Đã đổi ảnh đại diện thành công');
+        req.flash('success', 'Avatar changed successfully');
         res.redirect('/staff/profile-staff'); 
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -237,14 +238,14 @@ const getVerifyEmailTokenStaff = async (req, res) => {
         });
 
         if (!staffMember) {
-            req.flash('error', 'Liên kết token đã hết hạn');
+            req.flash('error', 'The token link has expired');
             return res.redirect('/staff/login-staff'); 
         }
 
         staffMember.check_click_email_staff = true;
         await staffMember.save();
 
-        req.flash('success', 'Đã xác nhận email thành công');
+        req.flash('success', 'Email confirmed successfully');
         res.redirect('/staff/login-staff')
     } catch (err) {
         res.status(500).json({ message: err.message });

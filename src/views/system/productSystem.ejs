@@ -19,114 +19,113 @@
             <div class="content">
                 <%- include('../staff/componentStaff/navBar') %>
 
-                    <main>
-                        <div class="header">
-                            <div class="left">
-                                <h1>Payment System</h1>
-                                <ul class="breadcrumb ">
-                                    <a href="/system/" class="active">Check Out</a>
-                                    /
-                                    <a href="/system/payment">Payment</a>
-                                </ul>
-                            </div>
-                            <a href="#" class="report">
-                                <i class='bx bx-cloud-download'></i>
-                                <span>Download CSV</span>
-                            </a>
+                <main>
+                    <div class="header">
+                        <div class="left">
+                            <h1>Payment System</h1>
+                            <ul class="breadcrumb ">
+                                <a href="/system/" class="active">Check Out</a>
+                                /
+                                <a href="/system/payment">Payment</a>
+                            </ul>
                         </div>
+                        <a href="#" class="report">
+                            <i class='bx bx-cloud-download'></i>
+                            <span>Download CSV</span>
+                        </a>
+                    </div>
 
-                        <!-- Insights -->
-                        <ul class="insights">
-                            <li>
-                                <i class='bx bx-qr'></i>
-                                <span class="info">
-                                    <h3>
-                                        Barcode
-                                    </h3>
-                                    <p>Product</p>
-                                </span>
-                                <form action="/system/" method="POST">
-                                    <input type="text" name="productCode" placeholder="Enter barcode">
-                                    <button type="submit">Add</button>
-                                </form>
+                    <!-- Insights -->
+                    <ul class="insights">
+                        <li>
+                            <i class='bx bx-qr'></i>
+                            <span class="info">
+                                <h3>
+                                    Barcode
+                                </h3>
+                                <p>Product</p>
+                            </span>
+                            <form action="/system/" method="POST">
+                                <input type="text" name="productCode" placeholder="Enter barcode">
+                                <button type="submit">Add</button>
+                            </form>
 
-                                <form action="/system/search" method="POST">
-                                    <input type="text" name="searchTerm" id="productSearchInput"
-                                        placeholder="Search products">
-                                    <!-- Khu vực hiển thị gợi ý -->
-                                    <p id="searchSuggestions" class="search-suggestions"></p>
-                                    <button>Add</button>
-                                </form>
-                            </li>
-                        </ul>
-                        <!-- End of Insights -->
+                            <form action="/system/search" method="POST">
+                                <input type="text" name="searchTerm" id="productSearchInput"
+                                    placeholder="Search products">
+                                <p id="searchSuggestions" class="search-suggestions"></p>
+                                <button>Add</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <!-- End of Insights -->
 
-                        <div class="bottom-data">
-                            <div class="orders">
-                                <div class="header">
-                                    <i class='bx bx-receipt'></i>
-                                    <h3>List Product</h3>
-                                    <i class='bx bx-filter'></i>
-                                    <i class='bx bx-search'></i>
-                                </div>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Code Product</th>
-                                            <th>Name Product</th>
-                                            <th>Status</th>
-                                            <th>Price</th>
-                                            <th>Total Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% products.forEach(product=> { %>
-                                            <tr>
-                                                <td>
-                                                    <%= product.code_product %>
-                                                </td>
-                                                <td>
-                                                    <%= product.name_product %>
-                                                </td>
-                                                <td><span class="status process">Processing</span></td>
-                                                <td>
-                                                    <%= product.price_sell_product %>
-                                                </td>
-                                                <td>
-                                                    <input type="number" value="<%= product.quantity %>" data-product-code="<%= product.code_product %>">
-                                                </td>
-                                            </tr>
-                                            <% }) %>
-                                    </tbody>
-                                </table>
+                    <div class="bottom-data">
+                        <div class="orders">
+                            <div class="header">
+                                <i class='bx bx-receipt'></i>
+                                <h3>List Product</h3>
+                                <i class='bx bx-filter'></i>
+                                <i class='bx bx-search'></i>
                             </div>
-                        </div>
-
-
-                        <table id="list-product" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th>Code Product</th>
-                                    <th>Name Product</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% listProduct.forEach(product=> { %>
+                            <table>
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <%= product.code_product %>
-                                        </td>
-                                        <td>
-                                            <%= product.name_product %>
-                                        </td>
+                                        <th>Code Product</th>
+                                        <th>Name Product</th>
+                                        <th>Status</th>
+                                        <th>Price</th>
+                                        <th>Total Amount</th>
                                     </tr>
-                                    <% }) %>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <% products.forEach(product=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= product.code_product %>
+                                            </td>
+                                            <td>
+                                                <%= product.name_product %>
+                                            </td>
+                                            <td><span class="status process">Processing</span></td>
+                                            <td>
+                                                <%= product.price_sell_product %>
+                                            </td>
+                                            <td>
+                                                <input type="number" value="<%= product.quantity %>" data-product-code="<%= product.code_product %>">
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-                        <button onclick="redirectToPayment()" class=" btn-continue">Continue</button>
-                        <button onclick="clearProductTable()" class=" btn-clear">Clear</button>
-                    </main>
+
+                    <table id="list-product" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Code Product</th>
+                                <th>Name Product</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% listProduct.forEach(product=> { %>
+                                <tr>
+                                    <td>
+                                        <%= product.code_product %>
+                                    </td>
+                                    <td>
+                                        <%= product.name_product %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+
+                    <button onclick="redirectToPayment()" class=" btn-continue">Continue</button>
+                    <button onclick="clearProductTable()" class=" btn-clear">Clear</button>
+                </main>
             </div>
 
             <script>
@@ -138,10 +137,6 @@
                     window.location.href = '/system/clear';
                 }
             </script>
-
-            <!-- ... (your HTML code) ... -->
-
-            <!-- ... (your HTML code) ... -->
 
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
@@ -165,9 +160,6 @@
                         // Thêm sản phẩm vào mảng
                         products.push(product);
                     });
-
-                    // Bây giờ biến products chứa danh sách sản phẩm từ bảng
-                    console.log(products);
 
                     // Gọi hàm để thực hiện tìm kiếm
                     initializeSearch(products);
@@ -247,8 +239,6 @@
                 });
 
             </script>
-
-            <!-- ... (your HTML code) ... -->
 </body>
 
 </html>

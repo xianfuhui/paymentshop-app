@@ -1,5 +1,7 @@
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
 
 const Admin = require('../models/adminModel');
 const Bill = require('../models/billModel');
@@ -26,9 +28,9 @@ const postAddProduct = async (req, res) => {
             day_add_product: new Date()
         });
 
-        const savedProduct = await newProduct.save();
+        await newProduct.save();
 
-        res.status(201).json(savedProduct);
+        res.status(200).json({ message: 'Added product successfully' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -53,10 +55,10 @@ const putEditProduct = async (req, res) => {
         }, { new: true });
 
         if (!updatedProduct) {
-            return res.status(404).json({ message: 'Không tìm thấy sản phẩm để cập nhật' });
+            return res.status(404).json({ message: 'Please try again' });
         }
 
-        return res.status(200).json(updatedProduct);
+        res.status(200).json({ message: 'Edit product successfully' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -70,11 +72,12 @@ const deleteDeleteProduct = async (req, res) => {
         const productExist = await ProductBill.findOne({ product: productId });
 
         if(productExist) {
-            return res.status(404).json({ message: 'Không thể xóa vì sản phẩm này có trong hóa đơn' });
+            return res.status(404).json({ message: 'Cannot be deleted because this product is included in the invoice' });
         }
 
         await Product.findByIdAndDelete(productId);
-        res.status(200).json({ message: 'Sản phẩm đã được xóa thành công' });
+
+        res.status(200).json({ message: 'Delete product successful' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -87,8 +90,7 @@ const getListDetailStaff = async (req, res) => {
     try {
         const staff = await Staff.findById(id_staff);
         if (!staff) {
-            //Không tìm thấy nhân viên
-            return res.redirect('/404');
+            return res.redirect('/405');
         }
 
         res.render('admin/listDetailStaff', { staff });
@@ -137,7 +139,7 @@ const postLoginAdmin = async (req, res) => {
         const admin = await Admin.findOne({ name_admin, password_admin });
 
         if (!admin) {
-            req.flash('error', 'Nhập sai tên quản trị viên hoặc mật khẩu');
+            req.flash('error', 'Incorrectly entered administrator name or password');
             return res.redirect('/admin/login-admin')
         } else {
             req.session.admin = admin;
@@ -154,7 +156,7 @@ const getProfileAdmin = async (req, res) => {
         const admin = await Admin.findById(req.session.admin._id);;
 
         if (!admin) {
-            req.flash('error', 'Không tìm thấy quản trị viên đang đăng nhập. Vui lòng thử lại');
+            req.flash('error', 'Please try again');
             return res.redirect('/admin/profile-admin')
         }
 
@@ -179,7 +181,7 @@ const postRegisterStaff = async (req, res) => {
 
         const existingStaff = await Staff.findOne({ email_staff: email });
         if (existingStaff) {
-            req.flash('error', 'Nhân viên đã tồn tại trong hệ thống');
+            req.flash('error', 'The staff already exists in the system');
             return res.redirect('/admin/register-staff');
         }
 
@@ -208,21 +210,21 @@ const postRegisterStaff = async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'doraemondevops@gmail.com',
-                pass: 'nkgr fdoh frdb etjp', 
+                user: process.env.USER_EMAIL,
+                pass: process.env.PASS_EMAIL, 
             },
         });
 
         const mailOptions = {
-            from: 'doraemondevops@gmail.com', 
+            from: 'Payment Shop',
             to: email,
-            subject: 'Xác minh đăng ký tài khoản',
+            subject: 'Account Registration Verification',
             html: `
-          <p>Xin chào ${fullName},</p>
-          <p>Vui lòng nhấp vào liên kết sau để xác minh đăng ký tài khoản:</p>
-          <a href="http://localhost:3000/staff/verify-email-token-staff/${token}">Xác minh tài khoản</a>
-        `,
-        };
+                <p>Hello ${fullName},</p>
+                <p>Please click on the following link to verify your account registration:</p>
+                <a href="http://localhost:3000/staff/verify-email-token-staff/${token}">Verify Account</a>
+            `,
+        };        
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
@@ -232,7 +234,7 @@ const postRegisterStaff = async (req, res) => {
             }
         });
 
-        req.flash('success', 'Email xác minh đã được gửi');
+        req.flash('success', 'Staff account successfully created. Verification email has been sent to staff');
         return res.redirect('/admin/register-staff');
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -248,12 +250,12 @@ const postChangePasswordAdmin = async (req, res) => {
         const admin = await Admin.findOne({ name_admin: name_admin, password_admin: currentPassword });
 
         if (!admin) {
-            req.flash('error', 'Nhập sai mật khẩu cũ');
+            req.flash('error', 'Enter the wrong old password');
             return res.redirect('/admin/profile-admin');
         }
 
         if (newPassword !== confirmPassword) {
-            req.flash('error', 'Mật khẩu mới không trùng nhau');
+            req.flash('error', 'New passwords do not match');
             return res.redirect('/admin/profile-admin');
         }
 
@@ -261,7 +263,7 @@ const postChangePasswordAdmin = async (req, res) => {
 
         await admin.save();
 
-        req.flash('success', 'Đổi mật khẩu thành công');
+        req.flash('success', 'Password changed successfully');
         return res.redirect('/admin/profile-admin');
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -272,7 +274,7 @@ const postChangePasswordAdmin = async (req, res) => {
 const postUploadAvatarAdmin = async (req, res) => {
     try {
         if (!req.file) {
-            req.flash('error', 'Ảnh không thể tải lên. Vui lòng thử lại');
+            req.flash('error', 'Please try again');
             return res.redirect('/admin/profile-admin');
         }
 
@@ -281,14 +283,14 @@ const postUploadAvatarAdmin = async (req, res) => {
         const admin = await Admin.findById(req.session.admin._id);
 
         if (!admin) {
-            req.flash('error', 'Lỗi cơ sở dữ liệu. Vui lòng thử lại');
+            req.flash('error', 'Please try again');
             return res.redirect('/admin/profile-admin');
         }
 
         admin.avatar_admin = avatarPath;
         await admin.save();
 
-        req.flash('success', 'Đổi ảnh đại diện thành công');
+        req.flash('success', 'Changed avatar successfully');
         return res.redirect('/admin/profile-admin');
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -302,17 +304,17 @@ const postChangeStatusStaff = async (req, res) => {
     try {
         const staff = await Staff.findById(staffId);
         
-        if (staff) {
-            const currentStatusBoolean = currentStatus === 'true' ? true : false;
-            staff.status_staff = !currentStatusBoolean;
-            await staff.save();
-        } else {
-            res.status(404).send('Không tìm thấy nhân viên'); 
+        if (!staff) {
+            return res.status(404).json({ message: 'Please try again' });
         }
 
-        res.status(200).json({ message: 'Done' });
+        const newStatus = currentStatus === 'true';
+        staff.status_staff = !newStatus;
+        await staff.save();
+
+        return res.status(200).json({ message: 'Updated status' });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        return res.status(500).json({ message: err.message });
     }
 };
 
@@ -335,21 +337,21 @@ const postSendTokenToEmailStaff = async (req, res) => {
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'doraemondevops@gmail.com',
-                    pass: 'nkgr fdoh frdb etjp', 
+                    user: process.env.USER_EMAIL,
+                    pass: process.env.PASS_EMAIL, 
                 },
             });
 
             const mailOptions = {
-                from: 'doraemondevops@gmail.com', 
+                from: 'Payment Shop',
                 to: staff.email_staff,
-                subject: 'Xác minh đăng ký tài khoản',
+                subject: 'Account Registration Verification',
                 html: `
-            <p>Xin chào ${staff.full_name_staff},</p>
-            <p>Vui lòng nhấp vào liên kết sau để xác minh đăng ký tài khoản:</p>
-            <a href="http://localhost:3000/staff/verify-email-token-staff/${token}">Xác minh tài khoản</a>
-            `,
-            };
+                    <p>Hello ${staff.full_name_staff},</p>
+                    <p>Please click on the following link to verify your account registration:</p>
+                    <a href="http://localhost:3000/staff/verify-email-token-staff/${token}">Verify Account</a>
+                `,
+            };            
 
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
@@ -359,10 +361,10 @@ const postSendTokenToEmailStaff = async (req, res) => {
                 }
             });
         } else {
-            res.status(404).send('Không tìm thấy nhân viên'); 
+            return res.status(404).json({ message: 'Please try again' });
         }
 
-        res.status(200).json({ message: 'Done' });
+        return res.status(200).json({ message: 'Verification email has been sent to staff' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

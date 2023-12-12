@@ -106,7 +106,7 @@
                 <span>Price Sell</span> 
                 <input type="number" id="addPriceSell" required><br>
                 <button type="submit" onclick="submitAddForm()">Add Product</button>
-                <button type="submit" style="background-color: rgb(255, 5, 5);" onclick="closeAddModal()">Cancel</button>
+                <button type="button" onclick="closeAddModal()" style="background-color: rgb(255, 5, 5);">Cancel</button>
             </form>
         </div>
     </div>
@@ -120,14 +120,14 @@
                 <input type="hidden" id="productId">
                 <span> Code Product</span>
                 <input type="text" id="editCode" required><br>
-                <span>Name Product:</span> 
+                <span>Name Product</span> 
                 <input type="text" id="editName" required><br>
-                <span>Price Buy: </span>
+                <span>Price Buy</span>
                 <input type="text" id="editPriceBuy" required><br>
-                <span>Price Sell: </span> 
+                <span>Price Sell</span> 
                 <input type="text" id="editPriceSell" required><br>
                 <button type="submit" onclick="submitEditForm()">Save Changes</button>
-                <button onclick="closeEditModal()" style="background-color: red;">Cancle</button>
+                <button type="button" onclick="closeEditModal()" style="background-color: red;">Cancel</button>
             </form>
         </div>
     </div>
@@ -137,14 +137,14 @@
         function openAddModal() {
             document.getElementById('addProductModal').classList.add('active');
             document.body.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Tạm thời vô hiệu hóa cuộn trang
+            document.body.style.overflow = 'hidden'; 
             document.getElementById('overlay').style.display = 'block';
         }
 
         function closeAddModal() {
             document.getElementById('addProductModal').classList.remove('active');
             document.body.classList.remove('active');
-            document.body.style.overflow = ''; // Bật lại cuộn trang khi đóng modal
+            document.body.style.overflow = ''; 
             document.getElementById('overlay').style.display = 'none';
         }
     </script>
@@ -160,114 +160,128 @@
 
             document.getElementById('editModal').style.display = 'block';
             document.body.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Tạm thời vô hiệu hóa cuộn trang
+            document.body.style.overflow = 'hidden'; 
             document.getElementById('overlay').style.display = 'block';
         }
 
         function closeEditModal() {
             document.getElementById('editModal').style.display = 'none';
             document.body.classList.remove('active');
-            document.body.style.overflow = ''; // Bật lại cuộn trang khi đóng modal
+            document.body.style.overflow = ''; 
             document.getElementById('overlay').style.display = 'none';
         }
-
     </script>
 
     <div id="overlay"></div>
 
+    <script>
+        async function submitAddForm(event) {
+            event.preventDefault();
+
+            const code = document.getElementById('addCode').value;
+            const name = document.getElementById('addName').value;
+            const priceBuy = document.getElementById('addPriceBuy').value;
+            const priceSell = document.getElementById('addPriceSell').value;
+    
+            if (code && name && priceBuy && priceSell) {
+                try {
+                    const response = await fetch('/admin/add-product', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            code_product: code,
+                            name_product: name,
+                            price_buy_product: priceBuy,
+                            price_sell_product: priceSell,
+                        })
+                    });
+        
+                    if (response.ok) {
+                        closeAddModal();
+                        const result = await response.json();
+                        alert(result.message);
+                        window.location.reload();
+                    } else {
+                        const result = await response.json();
+                        alert(result.message);
+                    }
+                } catch (err) {
+                    console.error(err);
+                }
+            } else {
+                alert('Please fill in all fields.'); 
+            }
+        }
+    </script>
+    
+    <!-- Edit san pham -->
+    <script>
+        async function submitEditForm(event) {
+            event.preventDefault();
+            
+            const id = document.getElementById('productId').value;
+            const code = document.getElementById('editCode').value;
+            const name = document.getElementById('editName').value;
+            const priceBuy = document.getElementById('editPriceBuy').value;
+            const priceSell = document.getElementById('editPriceSell').value;
+    
+            if (id && code && name && priceBuy && priceSell) {
+                try {
+                    const response = await fetch(`/admin/edit-product/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            code_product: code,
+                            name_product: name,
+                            price_buy_product: priceBuy,
+                            price_sell_product: priceSell,
+                        })
+                    });
+        
+                    if (response.ok) {
+                        closeModal();
+                        const result = await response.json();
+                        alert(result.message);
+                        window.location.reload();
+                    } else {
+                        const result = await response.json();
+                        alert(result.message);
+                    }
+                } catch (err) {
+                    console.error(err);
+                }
+            } else {
+                alert('Please fill in all fields.'); 
+            }
+        }
+    </script>
+    
+    <!-- Delete san pham -->
+    <script>
+        async function deleteProduct(id) {
+            try {
+                const response = await fetch(`/admin/delete-product/${id}`, {
+                    method: 'DELETE'
+                });
+    
+                if (response.ok) {
+                    const result = await response.json();
+                    alert(result.message);
+                    window.location.reload();
+                } else {
+                    const result = await response.json();
+                    alert(result.message);
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    </script>
+    
 </body>
-
-<script src="/js/admin/admin.js"></script>
-
-<!-- Them san pham -->
-<script>
-    async function submitAddForm() {
-        const code = document.getElementById('addCode').value;
-        const name = document.getElementById('addName').value;
-        const priceBuy = document.getElementById('addPriceBuy').value;
-        const priceSell = document.getElementById('addPriceSell').value;
-
-        try {
-            const response = await fetch('/admin/add-product', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    code_product: code,
-                    name_product: name,
-                    price_buy_product: priceBuy,
-                    price_sell_product: priceSell,
-                })
-            });
-
-            if (response.ok) {
-                closeAddModal();
-                alert('Đã thêm sản phẩm');
-                window.location.reload();
-            } else {
-                console.error('Có lỗi xảy ra khi thêm sản phẩm');
-            }
-        } catch (err) {
-            console.error('Error:', err);
-        }
-    }
-</script>
-
-<!-- Edit san pham -->
-<script>
-    async function submitEditForm() {
-        const id = document.getElementById('productId').value;
-        const code = document.getElementById('editCode').value;
-        const name = document.getElementById('editName').value;
-        const priceBuy = document.getElementById('editPriceBuy').value;
-        const priceSell = document.getElementById('editPriceSell').value;
-
-        try {
-            const response = await fetch(`/admin/edit-product/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    code_product: code,
-                    name_product: name,
-                    price_buy_product: priceBuy,
-                    price_sell_product: priceSell,
-                })
-            });
-
-            if (response.ok) {
-                closeModal();
-                alert('Đã chỉnh sửa sản phẩm');
-                window.location.reload();
-            } else {
-                console.error('Có lỗi xảy ra khi cập nhật sản phẩm');
-            }
-        } catch (err) {
-            console.error('Error:', err);
-        }
-    }
-</script>
-
-<!-- Delete san pham -->
-<script>
-    async function deleteProduct(id) {
-        try {
-            const response = await fetch(`/admin/delete-product/${id}`, {
-                method: 'DELETE'
-            });
-
-            if (response.ok) {
-                alert('Đã xóa sản phẩm');
-                window.location.reload();
-            } else {
-                console.error('Có lỗi xảy ra khi xóa sản phẩm');
-            }
-        } catch (err) {
-            console.error('Error:', err);
-        }
-    }
-</script>
 
 </html>
