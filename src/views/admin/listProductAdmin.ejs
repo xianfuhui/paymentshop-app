@@ -175,9 +175,7 @@
     <div id="overlay"></div>
 
     <script>
-        async function submitAddForm(event) {
-            event.preventDefault();
-
+        async function submitAddForm() {
             const code = document.getElementById('addCode').value;
             const name = document.getElementById('addName').value;
             const priceBuy = document.getElementById('addPriceBuy').value;
@@ -218,9 +216,7 @@
     
     <!-- Edit san pham -->
     <script>
-        async function submitEditForm(event) {
-            event.preventDefault();
-            
+        async function submitEditForm() {
             const id = document.getElementById('productId').value;
             const code = document.getElementById('editCode').value;
             const name = document.getElementById('editName').value;
