@@ -83,22 +83,22 @@
                         <form action="/report/analysis-report" method="POST">
                             <label for="filter">Lọc theo:</label>
                             <select name="filter" id="filter">
-                                <option value="today">Hôm nay</option>
-                                <option value="yesterday">Hôm qua</option>
-                                <option value="last7days">7 ngày trước</option>
-                                <option value="thisMonth">Tháng này</option>
-                                <option value="custom">Thời gian cụ thể</option>
+                                <option value="today">Today</option>
+                                <option value="yesterday">Yesterday</option>
+                                <option value="last7days">Last 7 days</option>
+                                <option value="thisMonth">This month</option>
+                                <option value="custom">Specific time</option>
                             </select>
                             <br>
 
-                            <label for="startDate" style="display: none;">Từ ngày:</label>
+                            <label for="startDate" style="display: none;">Start Date:</label>
                             <input type="date" id="startDate" name="startDate" style="display: none;">
 
-                            <label for="endDate" style="display: none;">Đến ngày:</label>
+                            <label for="endDate" style="display: none;">End Date:</label>
                             <input type="date" id="endDate" name="endDate" style="display: none;">
 
                             <br>
-                            <input type="submit" value="Lọc">
+                            <input type="submit" value="Filter">
                         </form>
                     </div>
 

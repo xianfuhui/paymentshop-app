@@ -113,8 +113,8 @@ const getPaymentSystem = async (req, res) => {
         let totalMoney = 0;
 
         productsInSession.forEach(product => {
-            totalProduct += product.quantity;
-            totalMoney += product.price_sell_product * product.quantity;
+            totalProduct += parseFloat(product.quantity);
+            totalMoney += parseFloat(product.price_sell_product) * parseFloat(product.quantity);
         });
 
         res.render('system/paymentSystem', { products: productsInSession, totalProduct, totalMoney });
@@ -169,7 +169,8 @@ const postPaymentSystem = async (req, res) => {
         } = req.body;
 
 
-        let customer = await Customer.findOne({ phoneCustomer });
+        let customer = await Customer.findOne({ phone_customer: phoneCustomer });
+    
         if (!customer) {
             customer = new Customer({
                 phone_customer: phoneCustomer,
