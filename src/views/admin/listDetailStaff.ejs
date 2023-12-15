@@ -13,6 +13,13 @@
 
 <body>
     <%- include('componentAdmin/notification') %>
+    <div class="success" style="display: none;">
+        <h2 id="successMessage"></h2>
+    </div>
+
+    <div class="error" style="display: none;">
+        <h2 id="errorMessage"></h2>
+    </div>
 
     <div class="container">
         <%- include('componentAdmin/sideBar') %>
@@ -102,11 +109,10 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    alert(result.message);
-                    window.location.reload();
+                    showSuccessMessageAndReload(result.message);
                 } else {
                     const result = await response.json();
-                    alert(result.message);
+                    showErrorMessageAndReload(result.message);
                 }
             } catch (err) {
                 console.error(err);
@@ -127,15 +133,38 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    alert(result.message);
-                    window.location.reload();
+                    showSuccessMessageAndReload(result.message);
                 } else {
                     const result = await response.json();
-                    alert(result.message);
+                    showErrorMessageAndReload(result.message);
                 }
             } catch (err) {
                 console.error(err);
             }
+        }
+    </script>
+
+    <script>
+        async function showSuccessMessageAndReload(message) {
+            const successMessageElement = document.getElementById('successMessage');
+            const successDiv = document.querySelector('.success');
+
+            successMessageElement.textContent = message;
+            successDiv.style.display = 'block';
+
+            await new Promise((resolve) => setTimeout(resolve, 3000)); 
+            window.location.reload();
+        }
+
+        async function showErrorMessageAndReload(message) {
+            const errorMessageElement = document.getElementById('errorMessage');
+            const errorDiv = document.querySelector('.error');
+
+            errorMessageElement.textContent = message;
+            errorDiv.style.display = 'block';
+
+            await new Promise((resolve) => setTimeout(resolve, 3000)); 
+            window.location.reload();
         }
     </script>
 </body>
