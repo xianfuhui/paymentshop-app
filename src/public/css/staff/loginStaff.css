@@ -174,25 +174,57 @@ form {
 }
 
 .error {
-    margin: 8px;
+    margin: 8px auto;
     width: fit-content;
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 60px;
+    left: 50%; 
+    transform: translateX(-50%); 
     padding: 15px;
-    background-color: pink;
+    background-color: rgb(245, 63, 93);
     border-radius: 5px;
-    /* Điều này sẽ làm cho góc phải trên trở nên tròn */
     animation: hide 3s linear 2s 1 forwards;
+    font-weight: bold;
 }
 
 .error h2 {
-    padding: 0px;
+    padding: 0;
     text-align: center;
     font-size: 18px;
     color: #fff;
     margin: 0;
-    /* Loại bỏ khoảng cách xung quanh nội dung */
+}
+
+.error p {
+    color: red;
+    margin-top: 10px;
+}
+
+.success {
+    margin: 8px auto;
+    width: fit-content;
+    position: fixed;
+    top: 60px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    padding: 15px;
+    background-color: rgb(88, 189, 111); 
+    border-radius: 5px;
+    animation: hide 3s linear 2s 1 forwards;
+    font-weight: bold;
+}
+
+.success h2 {
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+}
+
+.success p {
+    color: green; 
+    margin-top: 10px;
 }
 
 @keyframes hide {

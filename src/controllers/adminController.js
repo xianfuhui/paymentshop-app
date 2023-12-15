@@ -123,6 +123,7 @@ const getListStaff = async (req, res) => {
 const getLoginAdmin = async (req, res) => {
     try {
         if (req.session.admin) {
+
             res.redirect('/admin/profile-admin');
         } else {
             res.render('admin/loginAdmin');
@@ -215,6 +216,8 @@ const postRegisterStaff = async (req, res) => {
             },
         });
 
+        const currentURL = req.protocol + '://' + req.get('host');
+
         const mailOptions = {
             from: 'Payment Shop',
             to: email,
@@ -222,7 +225,7 @@ const postRegisterStaff = async (req, res) => {
             html: `
                 <p>Hello ${fullName},</p>
                 <p>Please click on the following link to verify your account registration:</p>
-                <a href="http://localhost:3000/staff/verify-email-token-staff/${token}">Verify Account</a>
+                <a href="${currentURL}/staff/verify-email-token-staff/${token}">Verify Account</a>
             `,
         };        
 
@@ -342,16 +345,18 @@ const postSendTokenToEmailStaff = async (req, res) => {
                 },
             });
 
+            const currentURL = req.protocol + '://' + req.get('host');
+
             const mailOptions = {
                 from: 'Payment Shop',
-                to: staff.email_staff,
+                to: email,
                 subject: 'Account Registration Verification',
                 html: `
-                    <p>Hello ${staff.full_name_staff},</p>
+                    <p>Hello ${fullName},</p>
                     <p>Please click on the following link to verify your account registration:</p>
-                    <a href="http://localhost:3000/staff/verify-email-token-staff/${token}">Verify Account</a>
+                    <a href="${currentURL}/staff/verify-email-token-staff/${token}">Verify Account</a>
                 `,
-            };            
+            };              
 
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
