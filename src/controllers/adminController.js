@@ -190,7 +190,7 @@ const postRegisterStaff = async (req, res) => {
         const password = email.split('@')[0];
 
         const token = crypto.randomBytes(20).toString('hex');
-        const tokenExpiration = Date.now() + 3600000;
+        const tokenExpiration = Date.now() + 60000;
 
         const newStaff = new Staff({
             avatar_staff: '/images/avatar_staff.jpg',
@@ -327,7 +327,7 @@ const postSendTokenToEmailStaff = async (req, res) => {
 
     try {
         const token = crypto.randomBytes(20).toString('hex');
-        const tokenExpiration = Date.now() + 3600000;
+        const tokenExpiration = Date.now() + 60000;
 
         const staff = await Staff.findById(staffId);
 
