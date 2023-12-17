@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const adminId = req.session.admin._id;
     const fileExtension = file.originalname.split('.').pop();
-    const uniqueFilename = 'avatar_admin_' + adminId + '.' + fileExtension;
+    const uniqueFilename = 'avatar_admin' + '.' + fileExtension;
 
     cb(null, uniqueFilename);
   }
