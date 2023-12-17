@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="/css/admin/admin.css">
     <link rel="stylesheet" href="/css/admin/listDetailStaff.css">
-    <title>Detail Staff</title>
+    <title>Payment Shop</title>
 </head>
 
 <body>
@@ -67,13 +67,13 @@
                                     <button class="status-button" onclick="changeStatusStaff(
                                       '<%= staff._id %>', 
                                       '<%= staff.status_staff %>'
-                                    )">Status</button>
+                                    )" name="statusButton_<%= staff.email_staff %>" id="statusButton_<%= staff.email_staff %>">Status</button>
                                 </td>
                                 <td>
                                     <%= staff.check_click_email_staff %>
                                     <button class="token-button" onclick="sendTokenToEmailStaff(
                                       '<%= staff._id %>'
-                                    )">Send Token To Email Staff</button>
+                                    )" name="sendEmailButton_<%= staff.email_staff %>" id="sendEmailButton_<%= staff.email_staff %>">Send Token To Email Staff</button>
                                 </td>
                                 <td>
                                     <%= staff.check_change_new_password_first_time_staff %>
@@ -111,7 +111,7 @@
                     showSuccessMessageAndReload(result.message);
                 } else {
                     const result = await response.json();
-                    showErrorMessageAndReload(result.message);
+                    showErrorMessage(result.message);
                 }
             } catch (err) {
                 console.error(err);
@@ -135,7 +135,7 @@
                     showSuccessMessageAndReload(result.message);
                 } else {
                     const result = await response.json();
-                    showErrorMessageAndReload(result.message);
+                    showErrorMessage(result.message);
                 }
             } catch (err) {
                 console.error(err);
@@ -155,15 +155,15 @@
             window.location.reload();
         }
 
-        async function showErrorMessageAndReload(message) {
+        async function showErrorMessage(message) {
             const errorMessageElement = document.getElementById('errorMessage');
             const errorDiv = document.querySelector('.error');
 
             errorMessageElement.textContent = message;
             errorDiv.style.display = 'block';
 
-            await new Promise((resolve) => setTimeout(resolve, 3000)); 
-            window.location.reload();
+            await new Promise((resolve) => setTimeout(resolve, 3000));
+            errorDiv.style.display = 'none';
         }
     </script>
 </body>

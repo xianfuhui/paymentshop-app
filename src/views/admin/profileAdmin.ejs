@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="/css/admin/admin.css">
     <link rel="stylesheet" href="/css/admin/profileAdmin.css">
-    <title>Profile Admin</title>
+    <title>Payment Shop</title>
 </head>
 
 <body>
@@ -23,8 +23,8 @@
                 <h1>Profile</h1>
                 <div class="user-list">
                     <div class="menu">
-                        <button class="btn-general" onclick="showGeneralContent()">General</button>
-                        <button class="btn-changePassword" onclick="changeContent()">Change Password</button>
+                        <button class="btn-general" onclick="showGeneralContent()" name="generalButton" id="generalButton">General</button>
+                        <button class="btn-changePassword" onclick="changeContent()" name="changePasswordButton" id="changePasswordButton">Change Password</button>
                     </div>
                     <div class="profile-card">
                         <div class="img">
@@ -90,7 +90,7 @@
               <label for="confirmPassword">Confirm New Password:</label>
               <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
           
-              <button type="submit" class="btn-change-Password">Save changes</button>;
+              <button type="submit" class="btn-change-Password" name="submitChangePasswordButton" id="submitChangePasswordButton">Save Changes</button>;
           </form>
         `;
 

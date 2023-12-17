@@ -7,7 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/staff/staff.css">
     <link rel="stylesheet" href="/css/staff/profileStaff.css">
-    <title>Profile Staff</title>
+    <title>Payment Shop</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="report">
                     <i class='bx bx-cloud-download'></i>
-                    <button class="btn-changePassword" onclick="openAddModal()">Change Password</button>
+                    <button class="btn-changePassword" onclick="openAddModal()" name="changePasswordButton" id="changePasswordButton">Change Password</button>
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                                 enctype="multipart/form-data">
                                 <input type="file" id="avatar_staff" name="avatar_staff"
                                     accept="image/*" required><br><br>
-                                <button type="submit">Upload Avatar</button>
+                                <button type="submit" name="submitUploadAvatar" id="submitUploadAvatar">Upload Avatar</button>
                             </form>
                         </div>
                     </span>

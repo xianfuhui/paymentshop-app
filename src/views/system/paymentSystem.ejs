@@ -7,7 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/staff/staff.css">
     <link rel="stylesheet" href="/css/system/paymentSystem.css">
-    <title>Payment System</title>
+    <title>Payment Shop</title>
 </head>
 
 <body>
@@ -75,7 +75,7 @@
                                 <label for="addressCustomer">Address:</label>
                                 <input type="text" id="addressCustomer">
                             </div>
-                            <button id="submitBtn" class=" btn-continue"
+                            <button id="submitButton" name="submitButton" class=" btn-continue"
                                 style="display: none;">Submit</button>
                         </div>
 
@@ -91,7 +91,7 @@
         const moneyGiveInput = document.getElementById('moneyGive');
         const totalMoneySpan = document.getElementById('totalMoney');
         const moneyBackSpan = document.getElementById('moneyBack');
-        const submitBtn = document.getElementById('submitBtn');
+        const submitButton = document.getElementById('submitButton');
 
         moneyGiveInput.addEventListener('input', function () {
             const totalMoney = parseFloat(totalMoneySpan.textContent);
@@ -102,13 +102,13 @@
             moneyBackSpan.textContent = moneyBack >= 0 ? moneyBack.toFixed(2) : 'Not enough money';
 
             if (moneyBack >= 0) {
-                submitBtn.style.display = 'block';
+                submitButton.style.display = 'block';
             } else {
-                submitBtn.style.display = 'none';
+                submitButton.style.display = 'none';
             }
         });
 
-        document.getElementById('submitBtn').addEventListener('click', function () {
+        document.getElementById('submitButton').addEventListener('click', function () {
             const nameCustomer = document.getElementById('nameCustomer').value;
             const phoneCustomer = document.getElementById('phoneCustomer').value;
             const addressCustomer = document.getElementById('addressCustomer').value;
@@ -170,7 +170,7 @@
                     successMessage.innerHTML = `
                         <h1>Payment Successful!</h1>
                         <p>Your payment was successful.</p>
-                        <button onclick="window.history.back()">Back</button>
+                        <button onclick="window.history.back()" id="backButton" name="backButton">Back</button>
                     `;
 
                     mainContent.appendChild(successMessage);

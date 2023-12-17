@@ -20,6 +20,12 @@ const postAddProduct = async (req, res) => {
             price_sell_product,
         } = req.body;
 
+        const productExist = await Product.findOne({ code_product: code_product });
+
+        if(productExist) {
+            return res.status(404).json({ message: 'Unable to add the product because the product code already exists in the database' });
+        }
+
         const newProduct = new Product({
             code_product,
             name_product,
@@ -27,7 +33,7 @@ const postAddProduct = async (req, res) => {
             price_sell_product,
             day_add_product: new Date()
         });
-
+        
         await newProduct.save();
 
         res.status(200).json({ message: 'Added product successfully' });
