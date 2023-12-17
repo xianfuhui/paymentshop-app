@@ -355,10 +355,10 @@ const postSendTokenToEmailStaff = async (req, res) => {
 
             const mailOptions = {
                 from: 'Payment Shop',
-                to: email,
+                to: staff.email_staff,
                 subject: 'Account Registration Verification',
                 html: `
-                    <p>Hello ${fullName},</p>
+                    <p>Hello ${staff.full_name_staff},</p>
                     <p>Please click on the following link to verify your account registration:</p>
                     <a href="${currentURL}/staff/verify-email-token-staff/${token}">Verify Account</a>
                 `,
