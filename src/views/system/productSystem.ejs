@@ -41,18 +41,18 @@
                             <i class='bx bx-qr'></i>
                             <span class="info">
                                 <h3>
-                                    Barcode
+                                    Cart
                                 </h3>
                                 <p>Product</p>
                             </span>
                             <form action="/system/" method="POST">
-                                <input type="text" name="productCode" placeholder="Enter Code">
+                                <input type="text" name="productCode" placeholder="Enter Code Product">
                                 <button type="submit" id="submitCodeButton" name="submitCodeButton">Add</button>
                             </form>
 
                             <form action="/system/search" method="POST">
                                 <input type="text" name="searchTerm" id="productSearchInput"
-                                    placeholder="Search Products">
+                                    placeholder="Search Name Product">
                                 <p id="searchSuggestions" class="search-suggestions"></p>
                                 <button type="submit" id="submitSearchButton" name="submitSearchButton">Add</button>
                             </form>
@@ -76,6 +76,7 @@
                                         <th>Status</th>
                                         <th>Price</th>
                                         <th>Total Amount</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,6 +94,9 @@
                                             </td>
                                             <td>
                                                 <input type="number" value="<%= product.quantity %>" data-product-code="<%= product.code_product %>">
+                                            </td>
+                                            <td>
+                                                <button class="delete-btn" data-product-code="<%= product.code_product %>" name="deleteButton_<%= product.code_product %>" id="deleteButton_<%= product.code_product %>">Delete</button> 
                                             </td>
                                         </tr>
                                         <% }) %>
@@ -238,6 +242,31 @@
                     });
                 });
 
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', async function() {
+                        const productCode = this.getAttribute('data-product-code');
+
+                        try {
+                            const response = await fetch(`/system/delete-product/${productCode}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            });
+
+                            if (response.ok) {
+                                this.closest('tr').remove();
+                                const result = await response.json();
+                                console.log(result.message);
+                            } else {
+                                const result = await response.json();
+                                console.log(result.message);
+                            }
+                        } catch (err) {
+                            console.error(err);
+                        }
+                    });
+                });
             </script>
 </body>
 

@@ -58,7 +58,7 @@
                                 <td>
                                     <%= staff.date_staff %>
                                 </td>
-                                <td>
+                                <td id="statusCell_<%= staff._id %>">
                                     <% if (staff.status_staff) { %>
                                         Unlock
                                     <% } else { %>
@@ -108,7 +108,18 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    showSuccessMessageAndReload(result.message);
+
+                    const statusText = result.staff.status_staff ? 'Unlock' : 'Lock';
+                    const statusCell = document.getElementById(`statusCell_${id}`); 
+                    if (statusCell) {
+                        statusCell.innerHTML = `${statusText}
+                        <button class="status-button" onclick="changeStatusStaff(
+                        '${id}', 
+                        '${result.staff.status_staff}'
+                        )" name="statusButton_${result.staff.email_staff}" id="statusButton_${result.staff.email_staff}">Status</button>`;
+                    }
+
+                    showSuccessMessage(result.message);
                 } else {
                     const result = await response.json();
                     showErrorMessage(result.message);
@@ -132,7 +143,7 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    showSuccessMessageAndReload(result.message);
+                    showSuccessMessage(result.message);
                 } else {
                     const result = await response.json();
                     showErrorMessage(result.message);
@@ -144,7 +155,7 @@
     </script>
 
     <script>
-        async function showSuccessMessageAndReload(message) {
+        async function showSuccessMessage(message) {
             const successMessageElement = document.getElementById('successMessage');
             const successDiv = document.querySelector('.success');
 
@@ -152,7 +163,7 @@
             successDiv.style.display = 'block';
 
             await new Promise((resolve) => setTimeout(resolve, 3000)); 
-            window.location.reload();
+            successDiv.style.display = 'none';
         }
 
         async function showErrorMessage(message) {

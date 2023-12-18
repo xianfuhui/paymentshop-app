@@ -36,7 +36,7 @@ const postAddProduct = async (req, res) => {
         
         await newProduct.save();
 
-        res.status(200).json({ message: 'Added product successfully' });
+        res.status(200).json({ message: 'Added product successfully', product: newProduct });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -64,7 +64,7 @@ const putEditProduct = async (req, res) => {
             return res.status(404).json({ message: 'Please try again' });
         }
 
-        res.status(200).json({ message: 'Edit product successfully' });
+        res.status(200).json({ message: 'Edit product successfully', product: updatedProduct });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -321,7 +321,7 @@ const postChangeStatusStaff = async (req, res) => {
         staff.status_staff = !newStatus;
         await staff.save();
 
-        return res.status(200).json({ message: 'Updated status' });
+        return res.status(200).json({ message: 'Updated status', staff: staff });
     } catch (err) {
         return res.status(500).json({ message: err.message });
     }

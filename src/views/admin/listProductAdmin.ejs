@@ -58,7 +58,7 @@
                     </thead>
                     <tbody>
                         <% list_product_admin.forEach(product=> { %>
-                            <tr>
+                            <tr id="row_<%= product._id %>">
                                 <td>
                                     <%= product.code_product %>
                                 </td>
@@ -72,7 +72,7 @@
                                     <%= product.price_sell_product %>
                                 </td>
                                 <td>
-                                    <%= product.day_add_product.toDateString() %>
+                                    <%= product.day_add_product %>
                                 </td>
                                 <td>
                                     <button style="background-color: rgb(0, 202, 44);" onclick="openEditModal(
@@ -206,8 +206,33 @@
         
                     if (response.ok) {
                         closeAddModal();
+
                         const result = await response.json();
-                        showSuccessMessageAndReload(result.message);
+                        const newProduct = result.product; 
+                        const tableBody = document.querySelector('tbody'); 
+                        const newRow = document.createElement('tr'); 
+                        newRow.innerHTML = `
+                            <td>${newProduct.code_product}</td>
+                            <td>${newProduct.name_product}</td>
+                            <td>${newProduct.price_buy_product}</td>
+                            <td>${newProduct.price_sell_product}</td>
+                            <td>${newProduct.day_add_product}</td>
+                            <td>
+                                <button style="background-color: rgb(0, 202, 44);" onclick="openEditModal(
+                                    '${newProduct._id}', 
+                                    '${newProduct.code_product}', 
+                                    '${newProduct.name_product}', 
+                                    '${newProduct.price_buy_product}', 
+                                    '${newProduct.price_sell_product}' 
+                                )" name="editButton_${newProduct.code_product}" id="editButton_${newProduct.code_product}">Edit</button>
+                                <button style="background-color: rgb(250, 32, 32);" onclick="deleteProduct(
+                                    '${newProduct._id}'
+                                )" name="deleteButton_${newProduct.code_product}" id="deleteButton_${newProduct.code_product}">Delete</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(newRow);
+
+                        showSuccessMessage(result.message);
                     } else {
                         closeAddModal();
                         const result = await response.json();
@@ -248,8 +273,33 @@
         
                     if (response.ok) {
                         closeEditModal();
+
                         const result = await response.json();
-                        showSuccessMessageAndReload(result.message);
+                        const editedProduct = result.product;
+                        const editedRow = document.getElementById(`row_${editedProduct._id}`);
+                        if (editedRow) {
+                            editedRow.innerHTML = `
+                                <td>${editedProduct.code_product}</td>
+                                <td>${editedProduct.name_product}</td>
+                                <td>${editedProduct.price_buy_product}</td>
+                                <td>${editedProduct.price_sell_product}</td>
+                                <td>${editedProduct.day_add_product}</td>
+                                <td>
+                                    <button style="background-color: rgb(0, 202, 44);" onclick="openEditModal(
+                                        '${editedProduct._id}', 
+                                        '${editedProduct.code_product}', 
+                                        '${editedProduct.name_product}', 
+                                        '${editedProduct.price_buy_product}', 
+                                        '${editedProduct.price_sell_product}' 
+                                    )" name="editButton_${editedProduct.code_product}" id="editButton_${editedProduct.code_product}">Edit</button>
+                                    <button style="background-color: rgb(250, 32, 32);" onclick="deleteProduct(
+                                        '${editedProduct._id}'
+                                    )" name="deleteButton_${editedProduct.code_product}" id="deleteButton_${editedProduct.code_product}">Delete</button>
+                                </td>
+                            `;
+                        }
+
+                        showSuccessMessage(result.message);
                     } else {
                         closeAddModal();
                         const result = await response.json();
@@ -274,7 +324,13 @@
     
                 if (response.ok) {
                     const result = await response.json();
-                    showSuccessMessageAndReload(result.message);
+                    
+                    const rowToDelete = document.getElementById(`row_${id}`);
+                    if (rowToDelete) {
+                        rowToDelete.remove();
+                    }
+
+                    showSuccessMessage(result.message);
                 } else {
                     const result = await response.json();
                     showErrorMessage(result.message);
@@ -286,7 +342,7 @@
     </script>
     
     <script>
-        async function showSuccessMessageAndReload(message) {
+        async function showSuccessMessage(message) {
             const successMessageElement = document.getElementById('successMessage');
             const successDiv = document.querySelector('.success');
 
@@ -294,7 +350,7 @@
             successDiv.style.display = 'block';
 
             await new Promise((resolve) => setTimeout(resolve, 3000)); 
-            window.location.reload();
+            successDiv.style.display = 'none';
         }
 
         async function showErrorMessage(message) {

@@ -31,4 +31,7 @@ router.get('/clear', systemController.postClearProduct);
 // Route để post số lượng
 router.post('/set-quantity-product', staffMiddleware.sessionStaff, systemController.postSetQuantityProduct);
 
+// Route để delete sản phẩm
+router.delete('/delete-product/:id', staffMiddleware.sessionStaff, systemController.deleteDeleteProduct);
+
 module.exports = router;

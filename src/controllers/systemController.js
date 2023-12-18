@@ -105,6 +105,24 @@ const postSetQuantityProduct = async (req, res) => {
     }
 };
 
+const deleteDeleteProduct = async (req, res) => {
+    const productCode = req.params.id;
+
+    try {
+        const productIndex = req.session.products.findIndex(prod => prod.code_product === productCode);
+
+        if (productIndex === -1) {
+            return res.status(404).json({ message: 'Please try again' });
+        }
+
+        req.session.products = req.session.products.filter(product => product.code_product !== productCode);
+
+        res.status(200).json({ message: 'Done' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 const getPaymentSystem = async (req, res) => {
     try {
         const productsInSession = req.session.products || [];
@@ -232,4 +250,5 @@ module.exports = {
     postClearProduct,
     postAddProduct1,
     postSetQuantityProduct,
+    deleteDeleteProduct,
 };
