@@ -12,7 +12,7 @@ const Staff = require('../models/staffModel');
 
 const getAnalysisReport = async (req, res) => {
     try {
-        const listBill = await Bill.find();
+        const listBill = await Bill.find().populate('customer').populate('staff');
         let totalReceivedMoney = 0;
         let totalOrders = listBill.length;
         let totalProducts = 0;

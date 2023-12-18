@@ -21,7 +21,7 @@ const getListBillCustomer = async (req, res) => {
             return res.redirect('/404');
         }
 
-        const list_bill_customer = await Bill.find({ customer: id_customer }); 
+        const list_bill_customer = await Bill.find({ customer: id_customer }).populate('customer').populate('staff'); 
 
         res.render('staff/listBillCustomer', { customer, list_bill_customer }); 
     } catch (err) {
@@ -44,7 +44,7 @@ const getListDetailBillCustomer = async (req, res) => {
     const id_bill = req.params.id; 
 
     try {
-        const bill = await Bill.findById(id_bill); 
+        const bill = await Bill.findById(id_bill).populate('customer').populate('staff'); 
         if (!bill) {
             return res.redirect('/404');
         }

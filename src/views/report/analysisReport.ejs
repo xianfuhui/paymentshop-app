@@ -114,15 +114,15 @@
                                         <th>Total Products</th>
                                         <th>Money Give</th>
                                         <th>Money Back</th>
-                                        <th>Customer</th>
-                                        <th>Staff</th>
+                                        <th>Phone Customer</th>
+                                        <th>Email Staff</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <% listBill.forEach(function(bill) { %>
                                         <tr>
                                             <td>
-                                                <%= bill.date_bill.toDateString() %>
+                                                <%= bill.date_bill %>
                                             </td>
                                             <td>
                                                 <%= bill.total_money_bill %>
@@ -137,10 +137,10 @@
                                                 <%= bill.money_back_bill %>
                                             </td>
                                             <td>
-                                                <%= bill.customer %>
+                                                <%= bill.customer.phone_customer %>
                                             </td>
                                             <td>
-                                                <%= bill.staff %>
+                                                <%= bill.staff.email_staff %>
                                             </td>
                                         </tr>
                                         <% }); %>
