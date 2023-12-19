@@ -44,7 +44,7 @@
 
             <!-- Recent Orders Table -->
             <div class="recent-orders">
-                <h1>List Product</h1>
+                <h1>List Product Admin</h1>
                 <table>
                     <thead>
                         <tr>
@@ -123,7 +123,7 @@
     <div id="editModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeEditModal()">&times;</span>
-            <h2>Edit Product</h2>
+            <h1>Edit Product</h1>
             <form id="editForm">
                 <input type="hidden" id="productId">
                 <span> Code Product</span>
@@ -131,10 +131,10 @@
                 <span>Name Product</span> 
                 <input type="text" id="editName" required><br>
                 <span>Price Buy</span>
-                <input type="text" id="editPriceBuy" required><br>
+                <input type="number" id="editPriceBuy" required><br>
                 <span>Price Sell</span> 
-                <input type="text" id="editPriceSell" required><br>
-                <button type="button" onclick="submitEditForm()" name="editAddButton" id="editAddButton">Save Changes</button>
+                <input type="number" id="editPriceSell" required><br>
+                <button type="button" onclick="submitEditForm()" name="submitEditButton" id="submitEditButton">Save Changes</button>
                 <button type="button" onclick="closeEditModal()" style="background-color: red;" name="cancelEditButton" id="cancelEditButton">Cancel</button>
             </form>
         </div>
@@ -211,6 +211,7 @@
                         const newProduct = result.product; 
                         const tableBody = document.querySelector('tbody'); 
                         const newRow = document.createElement('tr'); 
+                        newRow.id = `row_${newProduct._id}`;
                         newRow.innerHTML = `
                             <td>${newProduct.code_product}</td>
                             <td>${newProduct.name_product}</td>

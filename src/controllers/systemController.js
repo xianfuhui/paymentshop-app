@@ -46,7 +46,7 @@ const postAddProduct = async (req, res) => {
             req.session.products.push(productWithQuantity);
         }
 
-        req.flash('success', 'Added to cart');
+        req.flash('success', 'Added product to cart');
         return res.redirect('/system/'); 
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -79,7 +79,7 @@ const postAddProduct1 = async (req, res) => {
             req.session.products.push(productWithQuantity);
         }
 
-        req.flash('success', 'Added to cart');
+        req.flash('success', 'Added product to cart');
         return res.redirect('/system/'); 
     } catch (err) {
         res.status(500).json({ message: err.message });
