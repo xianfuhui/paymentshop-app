@@ -83,7 +83,7 @@ const deleteDeleteProduct = async (req, res) => {
 
         await Product.findByIdAndDelete(productId);
 
-        res.status(200).json({ message: 'Delete product successful' });
+        res.status(200).json({ message: 'Delete product successfully' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -121,6 +121,24 @@ const getListStaff = async (req, res) => {
         const list_staff = await Staff.find();
         res.render('admin/listStaff', { list_staff });
     } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+// Xóa nhân viên
+const deleteDeleteStaff = async (req, res) => {
+    const staffId = req.params.id;
+    
+    try {
+        const deletedStaff = await Staff.findByIdAndDelete(staffId);
+
+        if (!deletedStaff) {
+            return res.status(404).json({ message: 'Please try again' });
+        }
+
+        // Nếu xóa thành công, gửi phản hồi thành công về client
+        res.status(200).json({ message: 'Delete staff successfully' });
+    } catch (error) {
         res.status(500).json({ message: err.message });
     }
 };
@@ -407,5 +425,6 @@ module.exports = {
     postUploadAvatarAdmin,
     postChangeStatusStaff,
     postSendTokenToEmailStaff,
+    deleteDeleteStaff,
     getLogoutAdmin,
 };

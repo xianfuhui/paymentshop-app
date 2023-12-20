@@ -50,6 +50,9 @@ router.post('/change-status-staff', adminMiddleware.sessionAdmin, adminControlle
 // Route để thay đổi trạng thái Staff
 router.post('/send-token-to-email-staff', adminMiddleware.sessionAdmin, adminController.postSendTokenToEmailStaff);
 
+// Route để lấy thông tin tất cả nhân viên
+router.delete('/delete-staff/:id', adminMiddleware.sessionAdmin, adminController.deleteDeleteStaff);
+
 // Route để get đăng xuất
 router.get('/logout-admin', adminMiddleware.sessionAdmin, adminController.getLogoutAdmin);
 
