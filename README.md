@@ -63,29 +63,21 @@ Technology used:
 1  # <a name="_toc153737873"></a>**DESIGN ANALYSIS**
    1. ## <a name="_toc153737874"></a>**Diagram**
       1. ### <a name="_toc29941"></a><a name="_toc153737875"></a>***Class diagram***
-![A diagram of a computer
-
-Description automatically generated with medium confidence](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.001.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.001.png)
 
 <a name="_toc153737886"></a>**Figure 3.1.1 Class diagram**
 1. ### <a name="_toc19206"></a><a name="_toc153737876"></a>***Usecase diagram***
-![A diagram of a sales point
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.002.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.002.png)
 
 <a name="_toc153737887"></a>**Figure 3.1.2 Usecase diagram**
 
 1. ### <a name="_toc9136"></a><a name="_toc153737877"></a>***Sequence diagram***
-![A diagram of a system
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.003.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.003.png)
 
 <a name="_toc153737888"></a>**Figure 3.1.3 Sequence diagram**
 
 1. ### <a name="_toc9614"></a><a name="_toc153737878"></a>***Functional decomposition diagram***
-![A diagram of a system
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.004.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.004.png)
 
 <a name="_toc14970"></a><a name="_toc153737889"></a>**Figure 3.1.4:  Functional decomposition diagram**
 1. ## <a name="_toc153737879"></a>**Source code** 
@@ -108,17 +100,13 @@ Deploy steps by steps:
 
 **Step 1:** Create reponsitory on Github: paymentshop-app. Then push the code to Github: <https://github.com/xianfuhui/paymentshop-app>
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.005.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.005.png)
 
 <a name="_toc8414"></a><a name="_toc153737890"></a>**Figure 3.3.1: Creating repository**
 
 **Step 2:** Create MongoDB Atlas and write the information in .env file of the source code
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.006.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.006.png)
 
 <a name="_toc761"></a><a name="_toc153737891"></a>**Figure 3.3.2: Creating MongoDB Atlas**
 
@@ -130,9 +118,7 @@ Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-
 
 - Connect to code packaged on GitHub in previous step
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.008.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.008.png)
 
 <a name="_toc27477"></a><a name="_toc153737893"></a>**Figure 3.3.4: Reponsitory connection**
 
@@ -145,25 +131,19 @@ Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-
   - **Build Command:** yarn
   - **Start Command:** npm start
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.009.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.009.png)
 
 <a name="_toc30277"></a><a name="_toc153737894"></a>**Figure 3.3.5: Details Configuration Settings for Render**
 
 - The display screen has been successfully deployed
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.010.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.010.png)
 
 <a name="_toc21020"></a><a name="_toc153737895"></a>**Figure 3.3.6: Logs success notification**
 
 **Step 4:** Check result at https://paymentshop-app.onrender.com/
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.011.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.011.png)
 
 <a name="_toc153737896"></a>**Figure 3.3.7 Application after deploy successfully**
 1. ## <a name="_toc28240"></a><a name="_toc153737882"></a>**Application overview**
