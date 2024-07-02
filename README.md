@@ -65,27 +65,27 @@ Technology used:
       1. ### <a name="_toc29941"></a><a name="_toc153737875"></a>***Class diagram***
 ![A diagram of a computer
 
-Description automatically generated with medium confidence](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.001.png)
+Description automatically generated with medium confidence](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.001.png)
 
 <a name="_toc153737886"></a>**Figure 3.1.1 Class diagram**
 1. ### <a name="_toc19206"></a><a name="_toc153737876"></a>***Usecase diagram***
 ![A diagram of a sales point
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.002.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.002.png)
 
 <a name="_toc153737887"></a>**Figure 3.1.2 Usecase diagram**
 
 1. ### <a name="_toc9136"></a><a name="_toc153737877"></a>***Sequence diagram***
 ![A diagram of a system
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.003.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.003.png)
 
 <a name="_toc153737888"></a>**Figure 3.1.3 Sequence diagram**
 
 1. ### <a name="_toc9614"></a><a name="_toc153737878"></a>***Functional decomposition diagram***
 ![A diagram of a system
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.004.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.004.png)
 
 <a name="_toc14970"></a><a name="_toc153737889"></a>**Figure 3.1.4:  Functional decomposition diagram**
 1. ## <a name="_toc153737879"></a>**Source code** 
@@ -110,7 +110,7 @@ Deploy steps by steps:
 
 ![A screenshot of a computer
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.005.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.005.png)
 
 <a name="_toc8414"></a><a name="_toc153737890"></a>**Figure 3.3.1: Creating repository**
 
@@ -118,11 +118,11 @@ Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b4
 
 ![A screenshot of a computer
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.006.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.006.png)
 
 <a name="_toc761"></a><a name="_toc153737891"></a>**Figure 3.3.2: Creating MongoDB Atlas**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.007.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.007.png)
 
 <a name="_toc26944"></a><a name="_toc153737892"></a>**Figure 3.3.3 Update .env file**
 
@@ -132,7 +132,7 @@ Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b4
 
 ![A screenshot of a computer
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.008.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.008.png)
 
 <a name="_toc27477"></a><a name="_toc153737893"></a>**Figure 3.3.4: Reponsitory connection**
 
@@ -147,7 +147,7 @@ Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b4
 
 ![A screenshot of a computer
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.009.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.009.png)
 
 <a name="_toc30277"></a><a name="_toc153737894"></a>**Figure 3.3.5: Details Configuration Settings for Render**
 
@@ -155,7 +155,7 @@ Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b4
 
 ![A screenshot of a computer
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.010.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.010.png)
 
 <a name="_toc21020"></a><a name="_toc153737895"></a>**Figure 3.3.6: Logs success notification**
 
@@ -163,103 +163,103 @@ Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b4
 
 ![A screenshot of a computer
 
-Description automatically generated](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.011.png)
+Description automatically generated](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.011.png)
 
 <a name="_toc153737896"></a>**Figure 3.3.7 Application after deploy successfully**
 1. ## <a name="_toc28240"></a><a name="_toc153737882"></a>**Application overview**
    1. ### <a name="_toc15743"></a><a name="_toc153737883"></a>***UI/UX Admin site***
 - **Login feature for Admin**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.012.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.012.png)
 
 <a name="_toc2900"></a><a name="_toc153737897"></a>**Figure 3.4.1: Login interface for Admin** 
 
 - Profile feature Admin 
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.013.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.013.png)
 
 <a name="_toc27908"></a><a name="_toc153737898"></a>**Figure 3.4.2: Profile admin page** 
 
 - **Change password feature for admin**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.014.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.014.png)
 
 <a name="_toc13553"></a><a name="_toc153737899"></a>**Figure 3.4.3: Change password page**
 
 - **Create account staff feature for Admin**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.015.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.015.png)
 
 <a name="_toc6303"></a><a name="_toc153737900"></a>**Figure 3.4.4: Register for account staff page**
 
 - **List of staffs feature for Admin**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.016.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.016.png)
 
 <a name="_toc153737901"></a>**Figure 3.4.5 List of staffs page**
 
 - **View employee details feature for Admin**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.017.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.017.png)
 
 <a name="_toc153737902"></a>**Figure 3.4.6 View staff details page**
 
 - **Manage product feature for Admin**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.018.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.018.png)
 
 <a name="_toc153737903"></a>**Figure 3.4.7 List of product page**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.019.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.019.png)
 
 <a name="_toc153737904"></a>**Figure 3.4.8 Add product page**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.020.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.020.png)
 
 <a name="_toc153737905"></a>**Figure 3.4.9 Edit product page**
 
 - **Analysis reports feature for Admin**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.021.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.021.png)
 
 <a name="_toc153737906"></a>**Figure 3.4.10 Analysis reports page**
 
 1. ### <a name="_toc13309"></a><a name="_toc153737884"></a>***UI/UX Staff site***
 - **Login feature for Staff**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.022.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.022.png)
 
 <a name="_toc153737907"></a>**Figure 3.4.11 Staff login page**
 
 - **Profile feature for Staff** 
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.023.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.023.png)
 
 <a name="_toc153737908"></a>**Figure 3.4.12 Profile staff page**
 
 - **Manager customer**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.024.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.024.png)
 
 <a name="_toc153737909"></a>**Figure 3.4.13 List customer page**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.025.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.025.png)
 
 <a name="_toc153737910"></a>**Figure 3.4.14 Customer details page**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.026.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.026.png)
 
 <a name="_toc153737911"></a>**Figure 3.4.15 List product page**
 
 - **Cart feature for Staff** 
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.027.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.027.png)
 
 <a name="_toc153737912"></a>**Figure 3.4.16 Cart page**
 
 - **Payment feature for Staff**
 
-![](Aspose.Words.4c2e5063-b895-4232-a322-6ad4b47facb5.028.png)
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.028.png)
 
 <a name="_toc153737913"></a>**Figure 3.4.17 Payment page**
 
