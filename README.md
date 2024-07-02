@@ -242,22 +242,3 @@ Deploy steps by steps:
 ![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.028.png)
 
 <a name="_toc153737913"></a>**Figure 3.4.17 Payment page**
-
-
-
-
-###
-
-
-##
-
-
-
-
-
-
-
-
-
-1  # <a name="_toc153737885"></a>**SUMMARY**
-We have completed all requirements and deployed the website on Render at https://paymentshop-app.onrender.com/ thanks to the guidance of Mai Van Manh teacher. 
