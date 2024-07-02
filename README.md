@@ -27,25 +27,25 @@ Technology used:
 - **Fronted:** Use HTML, CSS, and JavaScript.
 - **Backend**: Use a programming language Node.js uses frameworks stored in package.json .
 
-`    	`**"ejs": "^3.1.9",**	
+**"ejs": "^3.1.9",**	
 
-`    	`**"express": "^4.18.2",**
+**"express": "^4.18.2",**
 
-`  	 `**"express-flash": "^0.0.2",**
+**"express-flash": "^0.0.2",**
 
-`   	 `**"express-session": "^1.17.3",**
+**"express-session": "^1.17.3",**
 
-`   	 `**"jsonwebtoken": "^9.0.2",**
+**"jsonwebtoken": "^9.0.2",**
 
-`   	 `**"mongoose": "^8.0.1",**
+**"mongoose": "^8.0.1",**
 
-`   	 `**"multer": "^1.4.5-lts.1",**
+**"multer": "^1.4.5-lts.1",**
 
-`   	 `**"nodemailer": "^6.9.7",**
+**"nodemailer": "^6.9.7",**
 
-`   	 `**"path": "^0.12.7",**
+**"path": "^0.12.7",**
 
-`   	 `**"pdfkit": "^0.14.0"**
+**"pdfkit": "^0.14.0"**
 
 - **Database**: Using a NoSQL database (MongoDB) for storage 
 
