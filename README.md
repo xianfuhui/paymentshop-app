@@ -1,5 +1,3 @@
-﻿1
-
 <a name="_toc153737871"></a>**1. INTRODUCTION** 
 
 In today's world, technology is becoming increasingly important and consumers are looking for convenience when shopping for technology products, especially mobile phones. That's why our mobile retail store has introduced an advanced app developed with Node.js, which helps create a unique and convenient shopping experience for customers. The smart search feature makes it easy for customers to choose the right phone for their individual needs. From the latest models to exclusive products that are only available on our store website, the app offers great variety and choice.
@@ -74,17 +72,13 @@ Deploy steps by steps:
 
 **Step 1:** Create reponsitory on Github: paymentshop-app. Then push the code to Github: <https://github.com/xianfuhui/paymentshop-app>
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.005.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.005.png)
 
 <a name="_toc8414"></a><a name="_toc153737890"></a>**Figure 3.3.1: Creating repository**
 
 **Step 2:** Create MongoDB Atlas and write the information in .env file of the source code
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.006.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.006.png)
 
 <a name="_toc761"></a><a name="_toc153737891"></a>**Figure 3.3.2: Creating MongoDB Atlas**
 
@@ -96,9 +90,7 @@ Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-
 
 - Connect to code packaged on GitHub in previous step
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.008.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.008.png)
 
 <a name="_toc27477"></a><a name="_toc153737893"></a>**Figure 3.3.4: Reponsitory connection**
 
@@ -111,25 +103,19 @@ Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-
   - **Build Command:** yarn
   - **Start Command:** npm start
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.009.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.009.png)
 
 <a name="_toc30277"></a><a name="_toc153737894"></a>**Figure 3.3.5: Details Configuration Settings for Render**
 
 - The display screen has been successfully deployed
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.010.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.010.png)
 
 <a name="_toc21020"></a><a name="_toc153737895"></a>**Figure 3.3.6: Logs success notification**
 
 **Step 4:** Check result at https://paymentshop-app.onrender.com/
 
-![A screenshot of a computer
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.011.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.011.png)
 
 <a name="_toc153737896"></a>**Figure 3.3.7 Application after deploy successfully**
 
@@ -202,8 +188,3 @@ Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-
 ![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.028.png)
 
 <a name="_toc153737913"></a>**Figure 3.4.17 Payment page**
-
-
-
-
-
