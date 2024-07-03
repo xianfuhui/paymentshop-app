@@ -11,51 +11,43 @@ Technology used:
 - **Fronted:** Use HTML, CSS, and JavaScript.
 - **Backend**: Use a programming language Node.js uses frameworks stored in package.json .
 
-`    	`**"ejs": "^3.1.9",**	
+**"ejs": "^3.1.9",**	
 
-`    	`**"express": "^4.18.2",**
+**"express": "^4.18.2",**
 
-`  	 `**"express-flash": "^0.0.2",**
+**"express-flash": "^0.0.2",**
 
-`   	 `**"express-session": "^1.17.3",**
+**"express-session": "^1.17.3",**
 
-`   	 `**"jsonwebtoken": "^9.0.2",**
+**"jsonwebtoken": "^9.0.2",**
 
-`   	 `**"mongoose": "^8.0.1",**
+**"mongoose": "^8.0.1",**
 
-`   	 `**"multer": "^1.4.5-lts.1",**
+**"multer": "^1.4.5-lts.1",**
 
-`   	 `**"nodemailer": "^6.9.7",**
+**"nodemailer": "^6.9.7",**
 
-`   	 `**"path": "^0.12.7",**
+**"path": "^0.12.7",**
 
-`   	 `**"pdfkit": "^0.14.0"**
+**"pdfkit": "^0.14.0"**
 
 - **Database**: Using a NoSQL database (MongoDB) for storage 
 
 <a name="_toc153737873"></a>**3. DESIGN ANALYSIS**
 
-![A diagram of a computer
-
-Description automatically generated with medium confidence](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.001.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.001.png)
 
 <a name="_toc153737886"></a>**Figure 3.1.1 Class diagram**
 
-![A diagram of a sales point
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.002.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.002.png)
 
 <a name="_toc153737887"></a>**Figure 3.1.2 Usecase diagram**
 
-![A diagram of a system
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.003.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.003.png)
 
 <a name="_toc153737888"></a>**Figure 3.1.3 Sequence diagram**
 
-![A diagram of a system
-
-Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.004.png)
+![](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.004.png)
 
 <a name="_toc14970"></a><a name="_toc153737889"></a>**Figure 3.1.4:  Functional decomposition diagram**
 
