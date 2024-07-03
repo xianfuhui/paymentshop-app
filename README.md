@@ -1,23 +1,5 @@
-<a name="_toc153737871"></a>**INTRODUCTION**</a>
-in today's world, technology is becoming increasingly important and consumers are looking for convenience when shopping for technology products, especially mobile phones. That's why our mobile retail store has introduced an advanced app developed with Node.js, which helps create a unique and convenient shopping experience for customers. The smart search feature makes it easy for customers to choose the right phone for their individual needs. From the latest models to exclusive products that are only available on our store website, the app offers great variety and choice.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<a name="_toc153737871"></a>**INTRODUCTION**
+In today's world, technology is becoming increasingly important and consumers are looking for convenience when shopping for technology products, especially mobile phones. That's why our mobile retail store has introduced an advanced app developed with Node.js, which helps create a unique and convenient shopping experience for customers. The smart search feature makes it easy for customers to choose the right phone for their individual needs. From the latest models to exclusive products that are only available on our store website, the app offers great variety and choice.
 
 <a name="_toc153737872"></a>**TECHNOLOGY USED IN APPLICATION**
 Technology used:
@@ -58,21 +40,21 @@ Technology used:
 
 
 
-<a name="_toc153737873"></a>**DESIGN ANALYSIS**
-   1. ## <a name="_toc153737874"></a>**Diagram**
-      1. ### <a name="_toc29941"></a><a name="_toc153737875"></a>***Class diagram***
+<a name="_toc153737872"></a>**DESIGN ANALYSIS**
+   <a name="_toc153737872">**Diagram**
+      1. <a name="_toc153737872">***Class diagram***
 ![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.001.png)
 
-<a name="_toc153737886"></a>**Figure 3.1.1 Class diagram**
+<a name="_toc153737872">**Figure 3.1.1 Class diagram**
 1. ### <a name="_toc19206"></a><a name="_toc153737876"></a>***Usecase diagram***
 ![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.002.png)
 
-<a name="_toc153737887"></a>**Figure 3.1.2 Usecase diagram**
+<a name="_toc153737872">**Figure 3.1.2 Usecase diagram**
 
 1. ### <a name="_toc9136"></a><a name="_toc153737877"></a>***Sequence diagram***
 ![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.003.png)
 
-<a name="_toc153737888"></a>**Figure 3.1.3 Sequence diagram**
+<a name="_toc153737872">**Figure 3.1.3 Sequence diagram**
 
 1. ### <a name="_toc9614"></a><a name="_toc153737878"></a>***Functional decomposition diagram***
 ![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.004.png)
