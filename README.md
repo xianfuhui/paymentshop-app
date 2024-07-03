@@ -1,6 +1,4 @@
-﻿1
-
-1  # <a name="_toc153737871"></a>**INTRODUCTION** 
+<a name="_toc153737871"></a>**INTRODUCTION** 
 in today's world, technology is becoming increasingly important and consumers are looking for convenience when shopping for technology products, especially mobile phones. That's why our mobile retail store has introduced an advanced app developed with Node.js, which helps create a unique and convenient shopping experience for customers. The smart search feature makes it easy for customers to choose the right phone for their individual needs. From the latest models to exclusive products that are only available on our store website, the app offers great variety and choice.
 
 
@@ -21,7 +19,7 @@ in today's world, technology is becoming increasingly important and consumers ar
 
 
 
-1  # <a name="_toc153737872"></a>**TECHNOLOGY USED IN APPLICATION**
+<a name="_toc153737872"></a>**TECHNOLOGY USED IN APPLICATION**
 Technology used:
 
 - **Fronted:** Use HTML, CSS, and JavaScript.
@@ -60,7 +58,7 @@ Technology used:
 
 
 
-1  # <a name="_toc153737873"></a>**DESIGN ANALYSIS**
+<a name="_toc153737873"></a>**DESIGN ANALYSIS**
    1. ## <a name="_toc153737874"></a>**Diagram**
       1. ### <a name="_toc29941"></a><a name="_toc153737875"></a>***Class diagram***
 ![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.001.png)
@@ -95,7 +93,7 @@ Technology used:
   - **routes:** Contains files that define routes for the application.
   - **views:** Contains files that define the user interface using the template engine
 
-1. ## <a name="_toc23423"></a><a name="_toc153737881"></a>**Deploy application**
+<a name="_toc23423"></a><a name="_toc153737881"></a>**Deploy application**
 Deploy steps by steps:
 
 **Step 1:** Create reponsitory on Github: paymentshop-app. Then push the code to Github: <https://github.com/xianfuhui/paymentshop-app>
