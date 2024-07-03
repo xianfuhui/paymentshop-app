@@ -1,11 +1,16 @@
-﻿1
+<a name="_toc153737871"></a>**INTRODUCTION**
+In today's world, technology is becoming increasingly important and consumers are looking for convenience when shopping for technology products, especially mobile phones. That's why our mobile retail store has introduced an advanced app developed with Node.js, which helps create a unique and convenient shopping experience for customers. The smart search feature makes it easy for customers to choose the right phone for their individual needs. From the latest models to exclusive products that are only available on our store website, the app offers great variety and choice.
 
+<<<<<<< HEAD
 <a name="_toc153737871"></a>**1. INTRODUCTION** 
 
 In today's world, technology is becoming increasingly important and consumers are looking for convenience when shopping for technology products, especially mobile phones. That's why our mobile retail store has introduced an advanced app developed with Node.js, which helps create a unique and convenient shopping experience for customers. The smart search feature makes it easy for customers to choose the right phone for their individual needs. From the latest models to exclusive products that are only available on our store website, the app offers great variety and choice.
 
 <a name="_toc153737872"></a>**2. TECHNOLOGY USED IN APPLICATION**
 
+=======
+<a name="_toc153737872"></a>**TECHNOLOGY USED IN APPLICATION**
+>>>>>>> bc0cbdb003b0351c856f567ab77a31d4c8c64797
 Technology used:
 
 - **Fronted:** Use HTML, CSS, and JavaScript.
@@ -37,6 +42,7 @@ Technology used:
 
 ![A diagram of a computer
 
+<<<<<<< HEAD
 Description automatically generated with medium confidence](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.001.png)
 
 <a name="_toc153737886"></a>**Figure 3.1.1 Class diagram**
@@ -44,14 +50,33 @@ Description automatically generated with medium confidence](./README_images/Aspo
 ![A diagram of a sales point
 
 Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.002.png)
+=======
 
-<a name="_toc153737887"></a>**Figure 3.1.2 Usecase diagram**
+
+
+
+
+
+
+
+
+<a name="_toc153737872"></a>**DESIGN ANALYSIS**
+   <a name="_toc153737872">**Diagram**
+      1. <a name="_toc153737872">***Class diagram***
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.001.png)
+
+<a name="_toc153737872">**Figure 3.1.1 Class diagram**
+1. ### <a name="_toc19206"></a><a name="_toc153737876"></a>***Usecase diagram***
+![](./README_images/Aspose.Words.f72a184c-9fed-4a7c-a412-7466b1f11f7d.002.png)
+>>>>>>> bc0cbdb003b0351c856f567ab77a31d4c8c64797
+
+<a name="_toc153737872">**Figure 3.1.2 Usecase diagram**
 
 ![A diagram of a system
 
 Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-42fe-af58-27550c12d34d.003.png)
 
-<a name="_toc153737888"></a>**Figure 3.1.3 Sequence diagram**
+<a name="_toc153737872">**Figure 3.1.3 Sequence diagram**
 
 ![A diagram of a system
 
@@ -76,8 +101,12 @@ Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-
   - **routes:** Contains files that define routes for the application.
   - **views:** Contains files that define the user interface using the template engine
 
+<<<<<<< HEAD
 <a name="_toc23423"></a><a name="_toc153737881"></a>**4.2 Deploy application**
 
+=======
+<a name="_toc23423"></a><a name="_toc153737881"></a>**Deploy application**
+>>>>>>> bc0cbdb003b0351c856f567ab77a31d4c8c64797
 Deploy steps by steps:
 
 **Step 1:** Create reponsitory on Github: paymentshop-app. Then push the code to Github: <https://github.com/xianfuhui/paymentshop-app>
@@ -215,3 +244,7 @@ Description automatically generated](./README_images/Aspose.Words.ec70593d-d589-
 
 
 
+<<<<<<< HEAD
+=======
+<a name="_toc153737913"></a>**Figure 3.4.17 Payment page**
+>>>>>>> bc0cbdb003b0351c856f567ab77a31d4c8c64797
